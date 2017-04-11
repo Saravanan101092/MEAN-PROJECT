@@ -1,0 +1,17 @@
+{
+  "name": "debate",
+  "version": "1.0.0",
+  "description": "training prjct",
+  "main": "debateServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "fs": "0.0.1-security",
+    "mongodb": "^2.2.25"
+  },
+  "author": "saravanan",
+  "license": "ISC"
+}

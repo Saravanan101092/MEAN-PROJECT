@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="node_modules/mongodb/node_modules/readable-stream/lib/|node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/promise/|node_modules/body-parser/node_modules/content-type/|node_modules/express/node_modules/send/node_modules/mime/|node_modules/express/lib/router/|node_modules/express/node_modules/on-finished/|node_modules/body-parser/node_modules/qs/dist/|node_modules/express/node_modules/serve-static/|node_modules/body-parser/lib/types/|node_modules/express/node_modules/depd/|node_modules/mongodb/lib/gridfs-stream/|node_modules/express/node_modules/type-is/node_modules/mime-types/|node_modules/body-parser/node_modules/http-errors/node_modules/inherits/|node_modules/express/node_modules/proxy-addr/|node_modules/mongodb/node_modules/readable-stream/lib/internal/streams/|node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/lib/|node_modules/body-parser/node_modules/debug/src/|node_modules/express/node_modules/cookie/|node_modules/express/node_modules/content-disposition/|node_modules/express/node_modules/etag/|node_modules/body-parser/node_modules/type-is/|node_modules/express/node_modules/send/node_modules/mime/build/|node_modules/express/node_modules/qs/dist/|node_modules/body-parser/node_modules/depd/lib/compat/|node_modules/express/|node_modules/mongodb/node_modules/es6-promise/lib/|node_modules/express/node_modules/send/node_modules/statuses/|node_modules/body-parser/node_modules/type-is/node_modules/mime-types/node_modules/mime-db/|node_modules/express/node_modules/on-finished/node_modules/ee-first/|node_modules/body-parser/node_modules/type-is/node_modules/media-typer/|node_modules/express/node_modules/depd/lib/browser/|node_modules/express/node_modules/debug/node_modules/ms/|node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/lib/|node_modules/body-parser/|node_modules/express/node_modules/path-to-regexp/|node_modules/express/node_modules/qs/test/|node_modules/mongodb/lib/|node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/|node_modules/express/node_modules/parseurl/|node_modules/body-parser/lib/|node_modules/express/node_modules/depd/lib/compat/|node_modules/express/node_modules/finalhandler/node_modules/unpipe/|node_modules/body-parser/node_modules/debug/|node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/|node_modules/express/node_modules/accepts/node_modules/negotiator/lib/|node_modules/express/node_modules/send/node_modules/ms/|node_modules/express/lib/middleware/|node_modules/body-parser/node_modules/on-finished/node_modules/ee-first/|node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/test/|node_modules/body-parser/node_modules/qs/test/|node_modules/body-parser/node_modules/qs/lib/|node_modules/express/node_modules/send/node_modules/http-errors/node_modules/inherits/|node_modules/body-parser/node_modules/bytes/|node_modules/express/node_modules/send/node_modules/http-errors/node_modules/setprototypeof/|node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/|node_modules/mongodb/|node_modules/mongodb/node_modules/mongodb-core/lib/connection/|node_modules/express/node_modules/accepts/node_modules/negotiator/|node_modules/express/lib/|node_modules/mongodb/node_modules/mongodb-core/lib/wireprotocol/|node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/browser_build/|node_modules/body-parser/node_modules/http-errors/node_modules/statuses/|node_modules/mongodb/node_modules/readable-stream/node_modules/isarray/|node_modules/express/node_modules/proxy-addr/node_modules/forwarded/|node_modules/express/node_modules/utils-merge/|node_modules/express/node_modules/finalhandler/|node_modules/mongodb/node_modules/readable-stream/node_modules/util-deprecate/|node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/node_modules/resolve-from/|node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/node_modules/semver/|node_modules/mongodb/node_modules/mongodb-core/lib/|node_modules/express/node_modules/finalhandler/node_modules/statuses/|node_modules/express/node_modules/range-parser/|node_modules/express/node_modules/content-type/|node_modules/express/node_modules/type-is/node_modules/media-typer/|node_modules/express/node_modules/type-is/|node_modules/express/node_modules/accepts/|node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/parser/|node_modules/mongodb/node_modules/readable-stream/|node_modules/mongodb/node_modules/mongodb-core/lib/auth/|node_modules/mongodb/lib/bulk/|node_modules/mongodb/node_modules/readable-stream/node_modules/buffer-shims/|node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/|node_modules/express/node_modules/vary/|node_modules/express/node_modules/accepts/node_modules/mime-types/|node_modules/body-parser/node_modules/http-errors/|node_modules/body-parser/node_modules/http-errors/node_modules/setprototypeof/|node_modules/body-parser/node_modules/depd/|node_modules/body-parser/node_modules/raw-body/|node_modules/mongodb/lib/gridfs/|node_modules/express/node_modules/methods/|node_modules/mongodb/node_modules/es6-promise/dist/|node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder/|node_modules/express/node_modules/qs/lib/|node_modules/express/node_modules/escape-html/|node_modules/express/node_modules/cookie-signature/|node_modules/body-parser/node_modules/type-is/node_modules/mime-types/|node_modules/body-parser/node_modules/iconv-lite/encodings/|debate/|node_modules/mongodb/node_modules/mongodb-core/|node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/|node_modules/mongodb/node_modules/mongodb-core/lib/tools/|node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/|node_modules/express/node_modules/debug/|node_modules/express/node_modules/accepts/node_modules/mime-types/node_modules/mime-db/|node_modules/body-parser/node_modules/debug/node_modules/ms/|node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/|node_modules/express/node_modules/send/node_modules/destroy/|node_modules/mongodb/node_modules/readable-stream/node_modules/process-nextick-args/|node_modules/express/node_modules/merge-descriptors/|node_modules/express/node_modules/encodeurl/|node_modules/body-parser/node_modules/depd/lib/browser/|node_modules/express/node_modules/send/node_modules/http-errors/|node_modules/express/node_modules/fresh/|node_modules/express/node_modules/type-is/node_modules/mime-types/node_modules/mime-db/|node_modules/body-parser/node_modules/raw-body/node_modules/unpipe/|node_modules/body-parser/node_modules/iconv-lite/lib/|node_modules/express/node_modules/send/|node_modules/body-parser/node_modules/on-finished/|node_modules/mongodb/node_modules/mongodb-core/lib/topologies/|node_modules/express/node_modules/array-flatten/" kind="src" path=""/>
+	<classpathentry kind="src" path="debate"/>
+	<classpathentry excluding="node_modules/content-type/|node_modules/qs/dist/|lib/types/|node_modules/http-errors/node_modules/inherits/|node_modules/debug/src/|node_modules/type-is/|node_modules/depd/lib/compat/|node_modules/type-is/node_modules/mime-types/node_modules/mime-db/|node_modules/type-is/node_modules/media-typer/|lib/|node_modules/debug/|node_modules/on-finished/node_modules/ee-first/|node_modules/qs/test/|node_modules/qs/lib/|node_modules/bytes/|node_modules/http-errors/node_modules/statuses/|node_modules/http-errors/|node_modules/http-errors/node_modules/setprototypeof/|node_modules/depd/|node_modules/raw-body/|node_modules/type-is/node_modules/mime-types/|node_modules/iconv-lite/encodings/|node_modules/debug/node_modules/ms/|node_modules/depd/lib/browser/|node_modules/raw-body/node_modules/unpipe/|node_modules/iconv-lite/lib/|node_modules/on-finished/" kind="src" path="node_modules/body-parser"/>
+	<classpathentry excluding="types/" kind="src" path="node_modules/body-parser/lib"/>
+	<classpathentry kind="src" path="node_modules/body-parser/lib/types"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/bytes"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/content-type"/>
+	<classpathentry excluding="src/|node_modules/ms/" kind="src" path="node_modules/body-parser/node_modules/debug"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/debug/node_modules/ms"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/debug/src"/>
+	<classpathentry excluding="lib/compat/|lib/browser/" kind="src" path="node_modules/body-parser/node_modules/depd"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/depd/lib/browser"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/depd/lib/compat"/>
+	<classpathentry excluding="node_modules/inherits/|node_modules/statuses/|node_modules/setprototypeof/" kind="src" path="node_modules/body-parser/node_modules/http-errors"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/http-errors/node_modules/inherits"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/http-errors/node_modules/setprototypeof"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/http-errors/node_modules/statuses"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/iconv-lite/encodings"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/iconv-lite/lib"/>
+	<classpathentry excluding="node_modules/ee-first/" kind="src" path="node_modules/body-parser/node_modules/on-finished"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/on-finished/node_modules/ee-first"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/qs/dist"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/qs/lib"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/qs/test"/>
+	<classpathentry excluding="node_modules/unpipe/" kind="src" path="node_modules/body-parser/node_modules/raw-body"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/raw-body/node_modules/unpipe"/>
+	<classpathentry excluding="node_modules/mime-types/node_modules/mime-db/|node_modules/media-typer/|node_modules/mime-types/" kind="src" path="node_modules/body-parser/node_modules/type-is"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/type-is/node_modules/media-typer"/>
+	<classpathentry excluding="node_modules/mime-db/" kind="src" path="node_modules/body-parser/node_modules/type-is/node_modules/mime-types"/>
+	<classpathentry kind="src" path="node_modules/body-parser/node_modules/type-is/node_modules/mime-types/node_modules/mime-db"/>
+	<classpathentry excluding="node_modules/send/node_modules/mime/|lib/router/|node_modules/on-finished/|node_modules/serve-static/|node_modules/depd/|node_modules/type-is/node_modules/mime-types/|node_modules/proxy-addr/|node_modules/proxy-addr/node_modules/ipaddr.js/lib/|node_modules/cookie/|node_modules/content-disposition/|node_modules/etag/|node_modules/send/node_modules/mime/build/|node_modules/qs/dist/|node_modules/send/node_modules/statuses/|node_modules/on-finished/node_modules/ee-first/|node_modules/depd/lib/browser/|node_modules/debug/node_modules/ms/|node_modules/path-to-regexp/|node_modules/qs/test/|node_modules/proxy-addr/node_modules/ipaddr.js/|node_modules/parseurl/|node_modules/depd/lib/compat/|node_modules/finalhandler/node_modules/unpipe/|node_modules/accepts/node_modules/negotiator/lib/|node_modules/send/node_modules/ms/|lib/middleware/|node_modules/send/node_modules/http-errors/node_modules/inherits/|node_modules/send/node_modules/http-errors/node_modules/setprototypeof/|node_modules/accepts/node_modules/negotiator/|lib/|node_modules/proxy-addr/node_modules/forwarded/|node_modules/utils-merge/|node_modules/finalhandler/|node_modules/finalhandler/node_modules/statuses/|node_modules/range-parser/|node_modules/content-type/|node_modules/type-is/node_modules/media-typer/|node_modules/type-is/|node_modules/accepts/|node_modules/vary/|node_modules/accepts/node_modules/mime-types/|node_modules/methods/|node_modules/qs/lib/|node_modules/escape-html/|node_modules/cookie-signature/|node_modules/debug/|node_modules/accepts/node_modules/mime-types/node_modules/mime-db/|node_modules/send/node_modules/destroy/|node_modules/merge-descriptors/|node_modules/encodeurl/|node_modules/send/node_modules/http-errors/|node_modules/fresh/|node_modules/type-is/node_modules/mime-types/node_modules/mime-db/|node_modules/send/|node_modules/array-flatten/" kind="src" path="node_modules/express"/>
+	<classpathentry excluding="router/|middleware/" kind="src" path="node_modules/express/lib"/>
+	<classpathentry kind="src" path="node_modules/express/lib/middleware"/>
+	<classpathentry kind="src" path="node_modules/express/lib/router"/>
+	<classpathentry excluding="node_modules/negotiator/lib/|node_modules/negotiator/|node_modules/mime-types/|node_modules/mime-types/node_modules/mime-db/" kind="src" path="node_modules/express/node_modules/accepts"/>
+	<classpathentry excluding="node_modules/mime-db/" kind="src" path="node_modules/express/node_modules/accepts/node_modules/mime-types"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/accepts/node_modules/mime-types/node_modules/mime-db"/>
+	<classpathentry excluding="lib/" kind="src" path="node_modules/express/node_modules/accepts/node_modules/negotiator"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/accepts/node_modules/negotiator/lib"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/array-flatten"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/content-disposition"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/content-type"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/cookie"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/cookie-signature"/>
+	<classpathentry excluding="node_modules/ms/" kind="src" path="node_modules/express/node_modules/debug"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/debug/node_modules/ms"/>
+	<classpathentry excluding="lib/browser/|lib/compat/" kind="src" path="node_modules/express/node_modules/depd"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/depd/lib/browser"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/depd/lib/compat"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/encodeurl"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/escape-html"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/etag"/>
+	<classpathentry excluding="node_modules/unpipe/|node_modules/statuses/" kind="src" path="node_modules/express/node_modules/finalhandler"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/finalhandler/node_modules/statuses"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/finalhandler/node_modules/unpipe"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/fresh"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/merge-descriptors"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/methods"/>
+	<classpathentry excluding="node_modules/ee-first/" kind="src" path="node_modules/express/node_modules/on-finished"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/on-finished/node_modules/ee-first"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/parseurl"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/path-to-regexp"/>
+	<classpathentry excluding="node_modules/ipaddr.js/lib/|node_modules/ipaddr.js/|node_modules/forwarded/" kind="src" path="node_modules/express/node_modules/proxy-addr"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/proxy-addr/node_modules/forwarded"/>
+	<classpathentry excluding="lib/" kind="src" path="node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/lib"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/qs/dist"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/qs/lib"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/qs/test"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/range-parser"/>
+	<classpathentry excluding="node_modules/mime/|node_modules/mime/build/|node_modules/statuses/|node_modules/ms/|node_modules/http-errors/node_modules/inherits/|node_modules/http-errors/node_modules/setprototypeof/|node_modules/destroy/|node_modules/http-errors/" kind="src" path="node_modules/express/node_modules/send"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/send/node_modules/destroy"/>
+	<classpathentry excluding="node_modules/inherits/|node_modules/setprototypeof/" kind="src" path="node_modules/express/node_modules/send/node_modules/http-errors"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/send/node_modules/http-errors/node_modules/inherits"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/send/node_modules/http-errors/node_modules/setprototypeof"/>
+	<classpathentry excluding="build/" kind="src" path="node_modules/express/node_modules/send/node_modules/mime"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/send/node_modules/mime/build"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/send/node_modules/ms"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/send/node_modules/statuses"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/serve-static"/>
+	<classpathentry excluding="node_modules/mime-types/|node_modules/media-typer/|node_modules/mime-types/node_modules/mime-db/" kind="src" path="node_modules/express/node_modules/type-is"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/type-is/node_modules/media-typer"/>
+	<classpathentry excluding="node_modules/mime-db/" kind="src" path="node_modules/express/node_modules/type-is/node_modules/mime-types"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/type-is/node_modules/mime-types/node_modules/mime-db"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/utils-merge"/>
+	<classpathentry kind="src" path="node_modules/express/node_modules/vary"/>
+	<classpathentry excluding="node_modules/readable-stream/lib/|node_modules/es6-promise/lib/es6-promise/promise/|lib/gridfs-stream/|node_modules/readable-stream/lib/internal/streams/|node_modules/es6-promise/lib/|node_modules/readable-stream/node_modules/core-util-is/lib/|lib/|node_modules/mongodb-core/node_modules/bson/lib/bson/|node_modules/mongodb-core/node_modules/require_optional/test/|node_modules/readable-stream/node_modules/inherits/|node_modules/mongodb-core/lib/connection/|node_modules/mongodb-core/lib/wireprotocol/|node_modules/mongodb-core/node_modules/bson/browser_build/|node_modules/readable-stream/node_modules/isarray/|node_modules/readable-stream/node_modules/util-deprecate/|node_modules/mongodb-core/node_modules/require_optional/node_modules/resolve-from/|node_modules/mongodb-core/node_modules/require_optional/node_modules/semver/|node_modules/mongodb-core/lib/|node_modules/mongodb-core/node_modules/bson/lib/bson/parser/|node_modules/readable-stream/|node_modules/mongodb-core/lib/auth/|lib/bulk/|node_modules/readable-stream/node_modules/buffer-shims/|node_modules/es6-promise/lib/es6-promise/|lib/gridfs/|node_modules/es6-promise/dist/|node_modules/readable-stream/node_modules/string_decoder/|node_modules/mongodb-core/|node_modules/mongodb-core/node_modules/require_optional/|node_modules/mongodb-core/lib/tools/|node_modules/mongodb-core/node_modules/bson/|node_modules/readable-stream/node_modules/core-util-is/|node_modules/readable-stream/node_modules/process-nextick-args/|node_modules/mongodb-core/lib/topologies/" kind="src" path="node_modules/mongodb"/>
+	<classpathentry excluding="gridfs-stream/|bulk/|gridfs/" kind="src" path="node_modules/mongodb/lib"/>
+	<classpathentry kind="src" path="node_modules/mongodb/lib/bulk"/>
+	<classpathentry kind="src" path="node_modules/mongodb/lib/gridfs"/>
+	<classpathentry kind="src" path="node_modules/mongodb/lib/gridfs-stream"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/es6-promise/dist"/>
+	<classpathentry excluding="es6-promise/promise/|es6-promise/" kind="src" path="node_modules/mongodb/node_modules/es6-promise/lib"/>
+	<classpathentry excluding="promise/" kind="src" path="node_modules/mongodb/node_modules/es6-promise/lib/es6-promise"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/promise"/>
+	<classpathentry excluding="node_modules/bson/lib/bson/|node_modules/require_optional/test/|lib/connection/|lib/wireprotocol/|node_modules/bson/browser_build/|node_modules/require_optional/node_modules/resolve-from/|node_modules/require_optional/node_modules/semver/|lib/|node_modules/bson/lib/bson/parser/|lib/auth/|node_modules/require_optional/|lib/tools/|node_modules/bson/|lib/topologies/" kind="src" path="node_modules/mongodb/node_modules/mongodb-core"/>
+	<classpathentry excluding="connection/|wireprotocol/|auth/|tools/|topologies/" kind="src" path="node_modules/mongodb/node_modules/mongodb-core/lib"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/lib/auth"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/lib/connection"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/lib/tools"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/lib/topologies"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/lib/wireprotocol"/>
+	<classpathentry excluding="lib/bson/|browser_build/|lib/bson/parser/" kind="src" path="node_modules/mongodb/node_modules/mongodb-core/node_modules/bson"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/browser_build"/>
+	<classpathentry excluding="parser/" kind="src" path="node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/parser"/>
+	<classpathentry excluding="test/|node_modules/resolve-from/|node_modules/semver/" kind="src" path="node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/node_modules/resolve-from"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/node_modules/semver"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/mongodb-core/node_modules/require_optional/test"/>
+	<classpathentry excluding="lib/|lib/internal/streams/|node_modules/core-util-is/lib/|node_modules/inherits/|node_modules/isarray/|node_modules/util-deprecate/|node_modules/buffer-shims/|node_modules/string_decoder/|node_modules/core-util-is/|node_modules/process-nextick-args/" kind="src" path="node_modules/mongodb/node_modules/readable-stream"/>
+	<classpathentry excluding="internal/streams/" kind="src" path="node_modules/mongodb/node_modules/readable-stream/lib"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/readable-stream/lib/internal/streams"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/readable-stream/node_modules/buffer-shims"/>
+	<classpathentry excluding="lib/" kind="src" path="node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/lib"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/readable-stream/node_modules/inherits"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/readable-stream/node_modules/isarray"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/readable-stream/node_modules/process-nextick-args"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder"/>
+	<classpathentry kind="src" path="node_modules/mongodb/node_modules/readable-stream/node_modules/util-deprecate"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
