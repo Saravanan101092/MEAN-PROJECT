@@ -48,7 +48,7 @@ module.exports = function(app,getDB){
 	};
 	app.getProArgumentsForQID= function (id, cb){
 		if(id!=null){
-			var cursor = getDB().collection('Arguments').find({debateID: id,proInd:"Y"});
+			var cursor = getDB().collection('Arguments').find({debateId: id, "content.proInd":"Y"});
 			cursor.toArray(cb);
 		}else{
 			console.log("Id is null");
@@ -57,7 +57,17 @@ module.exports = function(app,getDB){
 	};
 	app.getConArgsForQID= function (id, cb){
 		if(id!=null){
-			var cursor = getDB().collection('Arguments').find({debateID: id,proInd:"N"});
+			var cursor = getDB().collection('Arguments').find({debateId: id,"content.proInd":"N"});
+			cursor.toArray(cb);
+		}else{
+			console.log("Id is null");
+			cb();
+		}
+	};
+	app.getArgsForQID= function (id, proIn, cb){
+		if(id!=null){
+			console.log("debate:"+id+" pro:"+proIn);
+			var cursor = getDB().collection('Arguments').find({debateId: id,"content.proInd": proIn});
 			cursor.toArray(cb);
 		}else{
 			console.log("Id is null");
@@ -66,7 +76,7 @@ module.exports = function(app,getDB){
 	};
 	app.getAllArgsForQID= function (id, cb){
 		if(id!=null){
-			var cursor = getDB().collection('Arguments').find({debateID: id});
+			var cursor = getDB().collection('Arguments').find({debateId: id});
 			cursor.toArray(cb);
 		}else{
 			console.log("Id is null");

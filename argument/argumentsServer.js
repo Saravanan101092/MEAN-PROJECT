@@ -86,4 +86,28 @@ app.delete('/saru/arguments', function(req,res){
 		});
 	}
 });
+
+app.get('/saru/debate/:debateID/arguments/:proInd',function(req,res){
+	console.log("request received with debateid"+req.params.debateID);
+	if(!app.connected()){
+		console.log("DB connection error")
+	}
+	if(req.params.proInd == 'Y' || req.params.proInd == 'N' ){
+		app.getArgsForQID(req.params.debateID,req.params.proInd,function(err, data){
+			console.log("size:"+JSON.stringify(data));
+			sendResponseJson(res,data);
+		});
+	}
+});
+
+app.get('/saru/debate/:debateID/arguments', function(req,res){
+	console.log("request received with debateid"+req.params.debateID);
+	if(!app.connected()){
+		console.log("DB connection error")
+	}
+	app.getAllArgsForQID(req.params.debateID,function(err, data){
+		console.log("size:"+JSON.stringify(data));
+		sendResponseJson(res,data);
+	});
+});
 }
