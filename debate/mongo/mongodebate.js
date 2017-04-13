@@ -1,4 +1,4 @@
-var ObjectId = require('mongodb').ObjectID;
+var ObjectID = require('mongodb').ObjectID;
 
 module.exports = function(app,getDB){
 	app.getDebates= function(cb) {
