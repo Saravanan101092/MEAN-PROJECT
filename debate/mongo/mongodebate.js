@@ -8,6 +8,7 @@ module.exports = function(app,getDB){
 	
 	app.createDebate= function(debateData, cb){
 		if(debateData!=null){
+			debateData.content.crteDt = new Date();
 			getDB().collection('Debates').insert(debateData,cb);
 		}else{
 			console.log("Error null data cannot be inserted!");
@@ -18,6 +19,7 @@ module.exports = function(app,getDB){
 	app.updateDebate= function(debateData, cb){
 		 if(debateData!=null){
 			var id = debateData._id;
+			debateData.content.mdfydDt = new Date();
 			getDB().collection('Debates').updateOne({_id: new ObjectID(id)},{
 			$set: { content: debateData.content }},
 			cb);

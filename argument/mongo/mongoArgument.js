@@ -11,6 +11,7 @@ module.exports = function(app,getDB){
 	
 	app.createArgument= function(argument, cb){
 		if(argument!=null){
+			argument.content.crteDt = new Date();
 			getDB().collection('Arguments').insert(argument,cb);
 		}else{
 			console.log("Error null data cannot be inserted!");
@@ -21,6 +22,7 @@ module.exports = function(app,getDB){
 	app.updateArgument= function(argument, cb){
 		 if(argument!=null){
 			var id = argument._id;
+			argument.content.mdfydDt = new Date();
 			getDB().collection('Arguments').updateOne({_id: new ObjectID(id)},{
 			$set: { content: argument.content }},
 			cb);
