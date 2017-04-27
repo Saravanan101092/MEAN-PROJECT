@@ -1,0 +1,48 @@
+<div class="table" ng-controller="DebateController">
+	<div class="panel panel-primary">
+		<div class="panel-success" ng-show="currentDebate.question">
+			<h2>{{currentDebate.question}}</h2>
+		</div>
+		<div class="panel-body" ng-show="currentDebate.content.desc">
+			<h4>{{currentDebate.content.desc}}</h4>
+		</div>
+	</div>
+	<div style="float: left; width: 50%;">
+		<div class="panel panel-default">
+			<div class="panel-heading">FOR</div>
+			<div class="jumbotron" ng-model="currentPArgs">
+
+				<div class="dArg" ng-repeat="arg in currentPArgs">
+					<p lang="en">{{arg.content.text}}</p>
+					<strong>Saru</strong>
+				</div>
+
+			</div>
+			<label for="comment">Make your argument:</label>
+			<div class="form-group input-group">
+				<textarea class="form-control" rows="3" id="comment"
+					ng-model="txtPArg"></textarea>
+				<span class="input-group-addon btn btn-success"
+					ng-click="addArgument(txtPArg,'Y')">Enter</span>
+			</div>
+		</div>
+	</div>
+	<div style="float: left; width: 50%;">
+		<div class="panel panel-default">
+			<div class="panel-heading">AGAINST</div>
+			<div class="jumbotron" ng-model="currentNArgs">
+				<div class="msg" ng-repeat="arg in currentNArgs">
+					<p>User name</p>
+					<p>{{arg.content.text}}</p>
+				</div>
+			</div>
+			<label for="comment">Make your argument:</label>
+			<div class="form-group input-group">
+				<textarea class="form-control" rows="3" id="comment"
+					ng-model="txtNArg"></textarea>
+				<span class="input-group-addon btn btn-success"
+					ng-click="addArgument(txtNArg,'N')">Enter</span>
+			</div>
+		</div>
+	</div>
+</div>

@@ -7,12 +7,22 @@ var ObjectId = require('mongodb').ObjectID;
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
+var consolidate = require('consolidate');
+var path    = require("path");
 
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+
+app.use(express.static(__dirname + '/client'));
+  // assign the template engine to .html files
+  app.engine('html', consolidate['swig'])
+
+  // set .html as the default extension
+  app.set('view engine', 'html')
 
 // Configure the Facebook strategy for use by Passport.
 //
@@ -71,7 +81,7 @@ app.use(passport.session());
 // Define routes.
 app.get('/',
   function(req, res) {
-    res.render('home', { user: req.user });
+    res.sendFile(path.join(__dirname+'/client/index.html'));
   });
 
 app.get('/login',
