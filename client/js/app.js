@@ -18,6 +18,10 @@ app.config(function($routeProvider,$locationProvider) {
         templateUrl : "view/createDebate.html",
         controller : "MainController"
     })
+	.when("/login", {
+        templateUrl : "view/login.html",
+        controller : "LoginController"
+    })
     .when("/debate/:debateId",{
     	templateUrl :"view/debate2.html",
     	controller : "DebateController"
