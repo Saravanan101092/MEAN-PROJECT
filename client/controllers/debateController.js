@@ -1,16 +1,16 @@
-app.controller('DebateController',['$http','$scope', '$location','$routeParams',function($http,$scope,$location,$routeParams){
+app.controller('DebateController',['$http','$scope', '$location','$routeParams', 'config',function($http,$scope,$location,$routeParams,config){
 	console.log("inside debate controller");
-	$http.get('http://localhost:8087/saru/debates/'+$routeParams.debateId).then(function(response){
+	$http.get(config.apiUrl+'/saru/debates/'+$routeParams.debateId).then(function(response){
 		//console.log("response for debateid:"+JSON.stringify(response));
 		$scope.currentDebate = response.data[0];
 	});
 	
-	$http.get('http://localhost:8087/saru/debate/'+$routeParams.debateId+'/arguments/N').then(function(response){
+	$http.get(config.apiUrl+'/saru/debate/'+$routeParams.debateId+'/arguments/N').then(function(response){
 		//console.log("response for debateid and proINd N:"+JSON.stringify(response));
 		$scope.currentNArgs =[];
 		$scope.currentNArgs = response.data;
 	});
-	$http.get('http://localhost:8087/saru/debate/'+$routeParams.debateId+'/arguments/Y').then(function(response){
+	$http.get(config.apiUrl+'/saru/debate/'+$routeParams.debateId+'/arguments/Y').then(function(response){
 		//console.log("response for debateid and proINd Y:"+JSON.stringify(response));
 		$scope.currentPArgs =[];
 		$scope.currentPArgs = response.data;
@@ -27,7 +27,7 @@ app.controller('DebateController',['$http','$scope', '$location','$routeParams',
 		argument.content.disputes = 0;
 		argument.content.proInd = pInd;
 
-		var result = $http.post('http://localhost:8087/saru/arguments',argument).then(function(response){
+		var result = $http.post(config.apiUrl+'/saru/arguments',argument).then(function(response){
 			if (argument.content.proInd === 'Y') {
 				if ($scope.currentPArgs == 'undefined') {
 					$scope.currentPArgs = [];
