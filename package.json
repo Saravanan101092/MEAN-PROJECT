@@ -20,5 +20,8 @@
 	    "express-session": "^1.11.3"
   },
   "author": "saravanan",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "6.10.2"
+  }
 }
