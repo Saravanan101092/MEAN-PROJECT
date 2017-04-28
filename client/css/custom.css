@@ -171,11 +171,12 @@ padding-top: 40px;
 	  background: #263961;
 	  color: #fff;
 	}
-.create-custom{
+	
+.create-custom {
 	position: fixed;
 	overflow-y: scroll;
-	height: 100%; 
-	top: 55px;
+	height: 90%; 
+	top: 10%;
 	padding-top: 5%;
     padding-bottom: 5%;
 	padding-right: 5%;
