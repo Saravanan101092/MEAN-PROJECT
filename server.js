@@ -130,6 +130,6 @@ var sendResponseJson = function(res,data){
 require('./debate/debateServer.js')(app,sendResponseJson);
 require('./argument/argumentsServer.js')(app,sendResponseJson);
 
-app.listen(8087, function() {
+app.listen(process.env.PORT || 8087, function() {
 	console.log("Listening on port 8087");
 });
