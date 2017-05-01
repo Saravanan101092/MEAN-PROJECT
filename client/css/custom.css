@@ -116,6 +116,7 @@ text-align: center;
 }
 .argument{
 	width:100%;
+	text-align: left;
 }
 
 .form-signin {

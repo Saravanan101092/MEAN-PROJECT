@@ -12,6 +12,7 @@
 	 <link href="css/custom.css" rel="stylesheet">
 	 <link href="css/twitter.css" rel="stylesheet">
 	 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="../css/signin.css" rel="stylesheet">
 
 <script src="js/angular.min.js"></script>
 <script src="js/angular-route.min.js"></script>
@@ -20,6 +21,7 @@
 <script src="controllers/mainController.js"></script>
 <script src="controllers/loginController.js"></script>
 <script src="controllers/browseDebatesController.js"></script>
+
   </head>
 
   <body ng-app="myApp">
@@ -51,10 +53,13 @@
 			</ul>
 			<ul class="nav navbar-nav pull-right">
           <li>
-            <a href="#!login">Login</a>
+            <a href="#!login" ng-hide="window.user">Login</a>
           </li>
+              <li>
+                <a href="#" ng-show="window.user">{{window.user.displayName}}</a>
+              </li>
 		   <li>
-            <a href="#!login">Register</a>
+            <a href="#!login" ng-hide="window.user">Register</a>
           </li>
         </ul>
         </div><!--/.nav-collapse -->

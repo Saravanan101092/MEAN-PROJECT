@@ -16,7 +16,11 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-
+var callbackUrl = 'https://sarudebates.herokuapp.com/login/facebook/return';
+if(process.argv[2]) {
+  callbackUrl='http://localhost:8087/login/facebook/return';
+}
+console.log('callback url facebook is'+callbackUrl);
 app.use(express.static(__dirname + '/client'));
   // assign the template engine to .html files
   app.engine('html', consolidate['swig'])
@@ -33,8 +37,8 @@ app.use(express.static(__dirname + '/client'));
 // authentication.
 passport.use(new Strategy({
     clientID: 419543241753114,
-    clientSecret: "f1aea189260bab24e320561654e1d76b",
-    callbackURL: 'http://localhost:3000/login/facebook/return'
+    clientSecret: 'f1aea189260bab24e320561654e1d76b',
+    callbackURL: callbackUrl
   },
   function(accessToken, refreshToken, profile, cb) {
     // In this example, the user's Facebook profile is supplied as the user
@@ -95,6 +99,8 @@ app.get('/login/facebook',
 app.get('/login/facebook/return', 
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
+    console.log(JSON.stringify(req.user));
+    res.expose(req.user, 'user');
     res.redirect('/');
   });
 

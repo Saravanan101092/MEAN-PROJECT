@@ -4,7 +4,7 @@
  */
 
 app.controller('MainController',['$http','$scope','$location',function($http, $scope,$location){
-	console.log("inside main controller"+config.apiUrl);
+	console.log("inside main controller");
 	$scope.debate={};
 	$scope.submitDebate= function(){
 		console.log("inside submit debate method:" + JSON.stringify($scope.debate));

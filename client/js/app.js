@@ -26,7 +26,7 @@ app.config(function($routeProvider,$locationProvider) {
         controller : "LoginController"
     })
     .when("/debate/:debateId",{
-    	templateUrl :"view/debate2.html",
+    	templateUrl :"view/debate.html",
     	controller : "DebateController"
     });
 });
