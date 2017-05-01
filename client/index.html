@@ -53,13 +53,13 @@
 			</ul>
 			<ul class="nav navbar-nav pull-right">
           <li>
-            <a href="#!login" ng-hide="window.user">Login</a>
+            <a href="#!login" ng-hide="user" class="ng-hide">Login</a>
           </li>
               <li>
-                <a href="#" ng-show="window.user">{{window.user.displayName}}</a>
+                <a href="#" ng-show="user" class="ng-hide">{{user.content.displayName}}</a>
               </li>
 		   <li>
-            <a href="#!login" ng-hide="window.user">Register</a>
+            <a href="#!login" ng-hide="user" class="ng-hide">Register</a>
           </li>
         </ul>
         </div><!--/.nav-collapse -->

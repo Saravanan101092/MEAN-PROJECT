@@ -23,37 +23,62 @@ if(process.argv[2]) {
 console.log('callback url facebook is'+callbackUrl);
 app.use(express.static(__dirname + '/client'));
   // assign the template engine to .html files
-  app.engine('html', consolidate['swig'])
+  app.engine('html', consolidate['swig']);
 
   // set .html as the default extension
-  app.set('view engine', 'html')
+  app.set('view engine', 'html');
 
-// Configure the Facebook strategy for use by Passport.
-//
-// OAuth 2.0-based strategies require a `verify` function which receives the
-// credential (`accessToken`) for accessing the Facebook API on the user's
-// behalf, along with the user's profile.  The function must invoke `cb`
-// with a user object, which will be set at `req.user` in route handlers after
-// authentication.
+//DB configurations
+var mongo =  require('./dbInit.js')(app);
+var database;
+app.connect(function(db){
+	database = db;
+});
+
+app.connected= function() {
+	return typeof database != 'undefined';
+};
+
+var getDB = function() {
+	return database;
+}
+
+var mongodebate = require('./debate/mongo/mongodebate.js')(app,getDB);
+var mongoarg = require('./argument/mongo/mongoArgument.js')(app,getDB);
+var mongouser = require('./user/mongo/mongouser.js')(app,getDB);
+
+//module configurations
+var sendResponseJson = function(res,data){
+	res.status(200).send(data);
+}
+require('./debate/debateServer.js')(app,sendResponseJson);
+require('./argument/argumentsServer.js')(app,sendResponseJson);
+require('./user/userserver.js')(app,sendResponseJson);
+
+
 passport.use(new Strategy({
-    clientID: 419543241753114,
-    clientSecret: 'f1aea189260bab24e320561654e1d76b',
-    callbackURL: callbackUrl
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    // In this example, the user's Facebook profile is supplied as the user
-    // record.  In a production-quality application, the Facebook profile should
-    // be associated with a user record in the application's database, which
-    // allows for account linking and authentication with other identity
-    // providers.
-	
-	console.log("profile:"+JSON.stringify(profile));
-	console.log("accessToken:"+JSON.stringify(accessToken));
-	console.log("refreshToken:"+JSON.stringify(refreshToken));
-    return cb(null, profile);
-  }));
-  
-  // Configure Passport authenticated session persistence.
+      clientID: 419543241753114,
+      clientSecret: 'f1aea189260bab24e320561654e1d76b',
+      callbackURL: callbackUrl,
+      profileFields: ['id', 'displayName', 'gender','name', 'photos', 'emails']
+
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      // In this example, the user's Facebook profile is supplied as the user
+      // record.  In a production-quality application, the Facebook profile should
+      // be associated with a user record in the application's database, which
+      // allows for account linking and authentication with other identity
+      // providers.
+
+      profile.accessToken = accessToken;
+
+      console.log("profile:"+JSON.stringify(profile));
+      console.log("accessToken:"+JSON.stringify(accessToken));
+      console.log("refreshToken:"+JSON.stringify(refreshToken));
+      return cb(null, profile);
+    }));
+
+// Configure Passport authenticated session persistence.
 //
 // In order to restore authentication state across HTTP requests, Passport needs
 // to serialize users into and deserialize users out of the session.  In a
@@ -84,57 +109,65 @@ app.use(passport.session());
 
 // Define routes.
 app.get('/',
-  function(req, res) {
-    res.sendFile(path.join(__dirname+'/client/index.html'));
-  });
+    function(req, res) {
+      res.sendFile(path.join(__dirname+'/client/index.html'));
+    });
 
-app.get('/login',
-  function(req, res){
-    res.render('login');
-  });
+app.get('/login:',
+    function(req, res){
+      res.render('login');
+    });
 
 app.get('/login/facebook',
-  passport.authenticate('facebook'));
+    passport.authenticate('facebook',{ scope: 'email'}));
 
-app.get('/login/facebook/return', 
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-    console.log(JSON.stringify(req.user));
-    res.expose(req.user, 'user');
-    res.redirect('/');
-  });
+
+app.get('/login/facebook/return',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+      console.log('user in callback'+JSON.stringify(req.user));
+
+      app.getUserForEmail(req.user._json.email,function(err,result){
+        if(err!=null){
+          console.log('error while checking email duplicates');
+        }else{
+          if(result.length>0){
+            //email already present
+            app.updateFBInfo(result[0]._id,req.user,function(err,updatedRes){
+              console.log('FB details updated'+JSON.stringify(updatedRes));
+              res.send(result[0]);
+            });
+          }else{
+            //new email
+            app.addFBUser(req.user,function(err,res){
+              console.log('FB details added'+res);
+              res.send(res[0]);
+            });
+          }
+        }
+      });
+      //res.redirect('/login/'+req.user._id);
+    });
+
+// Configure the Facebook strategy for use by Passport.
+//
+// OAuth 2.0-based strategies require a `verify` function which receives the
+// credential (`accessToken`) for accessing the Facebook API on the user's
+// behalf, along with the user's profile.  The function must invoke `cb`
+// with a user object, which will be set at `req.user` in route handlers after
+// authentication.
+
 
 app.get('/profile',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    res.render('profile', { user: req.user });
-  });
-  
-//DB configurations
-var mongo =  require('./dbInit.js')(app);
-var database;
-app.connect(function(db){
-	database = db;
-});
-
-app.connected= function() {
-	return typeof database != 'undefined';
-};
-
-var getDB = function() {
-	return database;
-}
-
-var mongodebate = require('./debate/mongo/mongodebate.js')(app,getDB);
-var mongoarg = require('./argument/mongo/mongoArgument.js')(app,getDB);
+    require('connect-ensure-login').ensureLoggedIn(),
+    function(req, res){
+      res.render('profile', { user: req.user });
+    });
 
 
-//module configurations
-var sendResponseJson = function(res,data){
-	res.status(200).send(data);
-}
-require('./debate/debateServer.js')(app,sendResponseJson);
-require('./argument/argumentsServer.js')(app,sendResponseJson);
+
+
+
 
 app.listen(process.env.PORT || 8087, function() {
 	console.log("Listening on port 8087");

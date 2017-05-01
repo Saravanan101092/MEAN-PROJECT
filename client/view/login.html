@@ -1,7 +1,7 @@
 
-    <div  ng-controller="MainController" class="container" style="top: px;">
+    <div  ng-controller="MainController" class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" ng-hide="hideloginform">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
@@ -15,9 +15,11 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		<br>
 		<p>Or if you have a facebook account</p>
-		<a href="/login/facebook" title="Facebook" class="btn btn-block btn-facebook btn-lg"><i class="fa fa-facebook fa-fw"></i> Sign in with Facebook</a>
+		<a href="" ng-click="loginWithFB()" title="Facebook" class="btn btn-block btn-facebook btn-lg"><i class="fa fa-facebook fa-fw"></i> Sign in with Facebook</a>
 
       </form>
+<div id="fbcontent" ng-bind-html-unsafe="htmlContentFB">
 
+</div>
     </div> <!-- btn-facebook /container -->
 

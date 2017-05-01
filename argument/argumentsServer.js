@@ -4,13 +4,12 @@
 
 module.exports = function(app,sendResponseJson){
 app.get('/saru/argument', function(req, res ){
-	console.log("request received");
 	if(!app.connected()){
 		console.log("DB connection error")
 	}
 	app.getArguments(function(err, data){
 		console.log("size:"+data.length);
-		sendResponseJson(res,data);
+		sendResponseJson(res,data[0]);
 	});
 	
 });
@@ -23,13 +22,12 @@ app.get('/saru/argument/:id', function(req, res ){
 	
 	app.getArgumentForID(req.params.id,function(err, data){
 		console.log("size:"+JSON.stringify(data));
-		sendResponseJson(res,data);
+		sendResponseJson(res,data[0]);
 	});
 	
 });
 
 app.post('/saru/arguments', function(req, res){
-	console.log("POST argument creation method accessed!");
 	var data = req.body;
 	if(!app.connected()){
 		console.log("DB connection error")
@@ -49,7 +47,6 @@ app.post('/saru/arguments', function(req, res){
 });
 
  app.put('/saru/arguments', function(req,res){
-	 console.log("PUT argument edit methd accessed");
 	 var data = req.body;
 	
 	 if(!app.connected()){
@@ -69,7 +66,6 @@ app.post('/saru/arguments', function(req, res){
  });
 
 app.delete('/saru/arguments', function(req,res){
-	console.log("Delete argument delete methd accessed");
 	var data = req.body;
 	if(!app.connected()){
 				console.log("DB connection error")
@@ -88,7 +84,6 @@ app.delete('/saru/arguments', function(req,res){
 });
 
 app.get('/saru/debate/:debateID/arguments/:proInd',function(req,res){
-	console.log("request received with debateid"+req.params.debateID);
 	if(!app.connected()){
 		console.log("DB connection error")
 	}
@@ -101,7 +96,6 @@ app.get('/saru/debate/:debateID/arguments/:proInd',function(req,res){
 });
 
 app.get('/saru/debate/:debateID/arguments', function(req,res){
-	console.log("request received with debateid"+req.params.debateID);
 	if(!app.connected()){
 		console.log("DB connection error")
 	}

@@ -1,7 +1,6 @@
 module.exports = function(app, sendResponseJson ){
 	
 app.get('/saru/debates', function(req, res ){
-	console.log("request received");
 	if(!app.connected()){
 		console.log("DB connection error")
 	}
@@ -13,20 +12,18 @@ app.get('/saru/debates', function(req, res ){
 });
 
 app.get('/saru/debates/:id', function(req, res ){
-	console.log("request received with id"+req.params.id);
+	console.log("request received with debate id"+req.params.id);
 	if(!app.connected()){
 		console.log("DB connection error")
 	}
 	
 	app.getDebateForID(req.params.id,function(err, data){
-		console.log("size:"+JSON.stringify(data));
-		sendResponseJson(res,data);
+		sendResponseJson(res,data[0]);
 	});
 	
 });
 
 app.post('/saru/debates', function(req, res){
-	console.log("POST debate creation method accessed!");
 	var data = req.body;
 	if(!app.connected()){
 		console.log("DB connection error")
@@ -38,7 +35,7 @@ app.post('/saru/debates', function(req, res){
 				res.status(500).send("Internal error during insert"+err);
 			}else{
 				console.log("Data successfully inserted!");
-				sendResponseJson(res,result.ops);
+				sendResponseJson(res,result.ops[0]);
 			}
 		});
 	}
@@ -46,7 +43,6 @@ app.post('/saru/debates', function(req, res){
 });
 
  app.put('/saru/debates', function(req,res){
-	 console.log("PUT debate edit methd accessed");
 	 var data = req.body;
 	
 	 if(!app.connected()){
@@ -66,7 +62,6 @@ app.post('/saru/debates', function(req, res){
  });
 
 app.delete('/saru/debates', function(req,res){
-	console.log("Delete debate delete methd accessed");
 	var data = req.body;
 	if(!app.connected()){
 				console.log("DB connection error")

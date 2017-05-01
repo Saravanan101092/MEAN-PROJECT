@@ -2,7 +2,7 @@ app.controller('DebateController',['$http','$scope', '$location','$routeParams',
 	console.log("inside debate controller");
 	$http.get('/saru/debates/'+$routeParams.debateId).then(function(response){
 		//console.log("response for debateid:"+JSON.stringify(response));
-		$scope.currentDebate = response.data[0];
+		$scope.currentDebate = response.data;
 	});
 	
 	$http.get('/saru/debate/'+$routeParams.debateId+'/arguments/N').then(function(response){
@@ -32,12 +32,12 @@ app.controller('DebateController',['$http','$scope', '$location','$routeParams',
 				if ($scope.currentPArgs == 'undefined') {
 					$scope.currentPArgs = [];
 				}
-				$scope.currentPArgs.push(response.data[0]);
+				$scope.currentPArgs.push(response.data);
 			} else {
 				if ($scope.currentNArgs === 'undefined') {
 					$scope.currentNArgs = [];
 				}
-				$scope.currentNArgs.push(response.data[0]);
+				$scope.currentNArgs.push(response.data);
 			}
 		});
 	}
