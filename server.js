@@ -141,7 +141,7 @@ app.get('/login/facebook/return',
           }else{
             //new email
             app.addFBUser(req.user,function(err,res){
-              console.log('FB details added'+res);
+              console.log('FB details added'+JSON.stringify(res));
                 res.cookie("UserID",JSON.stringify(res[0]._id));
                 return res.redirect('/');
             });

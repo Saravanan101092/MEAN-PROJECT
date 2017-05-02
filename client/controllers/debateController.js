@@ -1,7 +1,7 @@
-app.controller('DebateController',['$http','$scope', '$location','$routeParams',function($http,$scope,$location,$routeParams){
+app.controller('DebateController',['$http','$scope', '$rootScope','$location','$routeParams',function($http,$scope,$rootScope,$location,$routeParams){
 	console.log("inside debate controller");
-	if(typeof $scope.debateuser !='undefined'){
-		console.log($scope.debateuser.displayName);
+	if(typeof $rootScope.debateuser !='undefined'){
+		console.log($rootScope.debateuser.displayName);
 	}else{
 		console.log('user data not available');
 	}
