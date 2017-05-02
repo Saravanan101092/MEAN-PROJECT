@@ -23,7 +23,7 @@
 						<div class = "dArg w3-card w3-hover-shadow argument">
 						<strong class="fullname">Saru</strong><span class="username">@mybff</span>
 						<p class="tweet-text" lang="en">{{arg.content.text}}</p>
-						<div class="tweet-actions">
+						<div class="tweet-actions" ng-show="authenticated">
 							<ul>
 								<li><span class="icon action-reply"></span> 21</li>
 								<li><span class="icon action-retweet"></span> 2</li>
@@ -36,7 +36,7 @@
 				</div>
 			</div>
 
-			<div class="form-group input-group ip">
+			<div class="form-group input-group ip" ng-show="authenticated">
 				<textarea class="form-control" rows="3" id="comment"
 					ng-model="txtPArg" placeholder="Make your point here"></textarea>
 				<span class="input-group-addon btn btn-success"
@@ -57,7 +57,7 @@
 						<div class = "dArg w3-card w3-hover-shadow argument">
 						<strong class="fullname">Saru</strong><span class="username">@mybff</span>
 						<p class="tweet-text" lang="en">{{arg.content.text}}</p>
-						<div class="tweet-actions">
+						<div class="tweet-actions" ng-show="authenticated">
 							<ul>
 								<li><span class="icon action-reply"></span> 21</li>
 								<li><span class="icon action-retweet"></span> 2</li>
@@ -70,7 +70,7 @@
 				</div>
 			</div>
 
-			<div class="form-group input-group ip">
+			<div class="form-group input-group ip" ng-show="authenticated">
 				<textarea class="form-control" rows="3" id="comment"
 					ng-model="txtNArg" placeholder="Make your point here"></textarea>
 				<span class="input-group-addon btn btn-success"

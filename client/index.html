@@ -49,7 +49,7 @@
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Debates <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#!createDebate">Create a Debate</a></li>
+                        <li><a href="#!createDebate" ng-show="authenticated">Create a Debate</a></li>
                         <li><a href="#!browseDebates">Browse Debates</a></li>
                     </ul>
                 </li>
@@ -59,7 +59,7 @@
                     <a href="#!login" ng-hide="authenticated">Login</a>
                 </li>
                 <li>
-                    <a href="#">{{debateuser.content.name}}</a>
+                    <a href="#" ng-show="authenticated">{{debateuser.content.name}}</a>
                 </li>
                 <li>
                     <a href="#!login" ng-hide="authenticated">Register</a>
