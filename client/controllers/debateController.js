@@ -1,5 +1,10 @@
 app.controller('DebateController',['$http','$scope', '$location','$routeParams',function($http,$scope,$location,$routeParams){
 	console.log("inside debate controller");
+	if(typeof $scope.debateuser !='undefined'){
+		console.log($scope.debateuser.displayName);
+	}else{
+		console.log('user data not available');
+	}
 	$http.get('/saru/debates/'+$routeParams.debateId).then(function(response){
 		//console.log("response for debateid:"+JSON.stringify(response));
 		$scope.currentDebate = response.data;

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>Debates Project</title>
 
     <!-- Bootstrap core CSS -->
@@ -8,74 +8,79 @@
 
     <!-- Custom styles for this template -->
     <link href="css/navbar-fixed-top.css" rel="stylesheet">
-     <link href="css/twt.css" rel="stylesheet">
-	 <link href="css/custom.css" rel="stylesheet">
-	 <link href="css/twitter.css" rel="stylesheet">
-	 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="css/twt.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/twitter.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="../css/signin.css" rel="stylesheet">
 
-<script src="js/angular.min.js"></script>
-<script src="js/angular-route.min.js"></script>
-<script src="js/app.js"></script>
-<script src="controllers/debateController.js"></script>
-<script src="controllers/mainController.js"></script>
-<script src="controllers/loginController.js"></script>
-<script src="controllers/browseDebatesController.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/angular-cookies.min.js"></script>
+    <script src="controllers/debateController.js"></script>
+    <script src="controllers/mainController.js"></script>
+    <script src="controllers/loginController.js"></script>
+    <script src="controllers/browseDebatesController.js"></script>
 
-  </head>
+</head>
 
-  <body ng-app="myApp">
+<body ng-app="myApp">
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Debates</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Debates</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Debates <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#!createDebate">Create a Debate</a></li>
-                <li><a href="#!browseDebates">Browse Debates</a></li>
-              </ul>
-            </li>
-			</ul>
-			<ul class="nav navbar-nav pull-right">
-          <li>
-            <a href="#!login" ng-hide="user" class="ng-hide">Login</a>
-          </li>
-              <li>
-                <a href="#" ng-show="user" class="ng-hide">{{user.content.displayName}}</a>
-              </li>
-		   <li>
-            <a href="#!login" ng-hide="user" class="ng-hide">Register</a>
-          </li>
-        </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Debates <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#!createDebate">Create a Debate</a></li>
+                        <li><a href="#!browseDebates">Browse Debates</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li>
+                    <a href="#!login" ng-hide="debateuser" class="ng-hide">Login</a>
+                </li>
+                <li>
+                    <a href="#">{{debateuser.content.displayName}}</a>
+                </li>
+                <li>
+                    <a href="#!login" ng-hide="debateuser" class="ng-hide">Register</a>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
 
-    <div class="container" ng-view>
+<div class="container" ng-view>
 
-    </div> <!-- /container -->
+</div>
+<!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
 </html>
 

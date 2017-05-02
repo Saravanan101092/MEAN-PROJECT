@@ -1,12 +1,15 @@
-app.controller('BrowseDebatesController',['$scope','$http','$location',function($scope,$http,$location){
-	console.log("inside browsedebate controller "+JSON.stringify($scope.user));
-	//if(typeof $routeParams.userId !='undefined'){
-	//	$http.get('/saru/users/'+$routeParams.userId).then(function(response){
-	//		console.log('User from ID after login:'+response);
-	//		$scope.user = response.data;
-	//		$location.path('/');
-	//	});
-	//}
+app.controller('BrowseDebatesController',['$scope','$http','$location','$cookies',function($scope,$http,$location,$cookies){
+	$scope.debateuser={};
+	console.log("Cookie"+$cookies.get('UserID'));
+	if(typeof $cookies.get('UserID') !='undefined'){
+		var userID = $cookies.get('UserID').replace(/['"]+/g, '');
+		console.log("Cookie"+userID);
+		$http.get('/saru/users/'+userID).then(function(response){
+			console.log('User from ID after login:'+JSON.stringify(response));
+			$scope.debateuser = response.data;
+
+		});
+	}
 	$scope.allDebates=[];
 	$http.get('/saru/debates').then(function(response){
 		console.log("response receiveed"+JSON.stringify(response));

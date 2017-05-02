@@ -135,18 +135,20 @@ app.get('/login/facebook/return',
             //email already present
             app.updateFBInfo(result[0]._id,req.user,function(err,updatedRes){
               console.log('FB details updated'+JSON.stringify(updatedRes));
-              res.send(result[0]);
+              res.cookie("UserID",JSON.stringify(result[0]._id));
+                return res.redirect('/');
             });
           }else{
             //new email
             app.addFBUser(req.user,function(err,res){
               console.log('FB details added'+res);
-              res.send(res[0]);
+                res.cookie("UserID",JSON.stringify(res[0]._id));
+                return res.redirect('/');
             });
           }
         }
       });
-      //res.redirect('/login/'+req.user._id);
+
     });
 
 // Configure the Facebook strategy for use by Passport.
