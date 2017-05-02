@@ -16,8 +16,26 @@
 
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBmg0iMFKmiNnBSiuDmHfqGV_D66EcMfek",
+            authDomain: "sarudebates.firebaseapp.com",
+            databaseURL: "https://sarudebates.firebaseio.com",
+            projectId: "sarudebates",
+            storageBucket: "sarudebates.appspot.com",
+            messagingSenderId: "210169173275"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
+
     <script src="js/app.js"></script>
     <script src="js/angular-cookies.min.js"></script>
+    <script src="js/services/authentication.js"></script>
     <script src="controllers/debateController.js"></script>
     <script src="controllers/mainController.js"></script>
     <script src="controllers/loginController.js"></script>
@@ -49,20 +67,20 @@
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Debates <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#!createDebate" ng-show="authenticated">Create a Debate</a></li>
+                        <li><a href="#!createDebate" ng-show="currentUser">Create a Debate</a></li>
                         <li><a href="#!browseDebates">Browse Debates</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li>
-                    <a href="#!login" ng-hide="authenticated">Login</a>
+                    <a href="#!login" ng-hide="currentUser">Login</a>
                 </li>
                 <li>
-                    <a href="#" ng-show="authenticated">{{debateuser.content.name}}</a>
+                    <a href="" ng-show="currentUser">{{currentUser.firstname}}</a>
                 </li>
                 <li>
-                    <a href="#!login" ng-hide="authenticated">Register</a>
+                    <a href="#!registration" ng-hide="currentUser">Register</a>
                 </li>
             </ul>
         </div>

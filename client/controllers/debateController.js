@@ -1,4 +1,4 @@
-app.controller('DebateController',['$http','$scope', '$rootScope','$location','$routeParams',function($http,$scope,$rootScope,$location,$routeParams){
+myApp.controller('DebateController',['$http','$scope', '$rootScope','$location','$routeParams',function($http,$scope,$rootScope,$location,$routeParams){
 	console.log("inside debate controller");
 	if(typeof $rootScope.debateuser !='undefined'){
 		console.log($rootScope.debateuser.displayName);

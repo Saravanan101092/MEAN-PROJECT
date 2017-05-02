@@ -3,7 +3,7 @@
  * Debate controller
  */
 
-app.controller('MainController',['$http','$scope','$location',function($http, $scope,$location){
+myApp.controller('MainController',['$http','$scope','$location',function($http, $scope,$location){
 	console.log("inside main controller");
 	$scope.debate={};
 	$scope.submitDebate= function(){

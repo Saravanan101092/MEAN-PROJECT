@@ -1,4 +1,4 @@
-app.controller('BrowseDebatesController',['$scope','$rootScope','$http','$location','$cookies',function($scope,$rootScope,$http,$location,$cookies){
+myApp.controller('BrowseDebatesController',['$scope','$rootScope','$http','$location','$cookies',function($scope,$rootScope,$http,$location,$cookies){
 	$rootScope.debateuser={};
 	$rootScope.authenticated=false;
 	console.log("Cookie"+$cookies.get('UserID'));
