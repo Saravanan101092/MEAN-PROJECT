@@ -22,4 +22,12 @@ myApp.controller('LoginController',
                 console.log("FB login");
                 Authentication.fbLogin();
             };
+
+            $scope.checkpass = function(a,b){
+                if(a==b){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
         }]);

@@ -249,4 +249,6 @@ input.ng-valid.ng-touched {
 	padding-right: 5px;
 	padding-left: 5px;
 }
-
+.imgwidth{
+	width:50px;
+}

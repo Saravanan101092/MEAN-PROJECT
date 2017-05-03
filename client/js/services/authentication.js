@@ -15,17 +15,21 @@ myApp.factory('Authentication',
 
   auth.$onAuthStateChanged(function(authUser) {
     var userB = firebase.auth().currentUser;
-$rootScope.currentUser={};
+    console.log("USERBF"+JSON.stringify(userB));
+    console.log("AuthUser"+JSON.stringify(authUser));
+
     if(authUser) {
-      console.log(JSON.stringify(userB));
+
       if(authUser.providerData[0].providerId=="facebook.com"){
         console.log('facebook user');
         var user = {};
         user.fullname = authUser.providerData[0].displayName;
         user.email = authUser.providerData[0].email;
-        user.photoURL = authUser.providerData[0].photoURL;
+        user.photourl = authUser.providerData[0].photoURL;
         user.regUser = authUser.providerData[0].uid;
         user.providerID = authUser.providerData[0].providerId;
+        $rootScope.currentUser=user;
+        $rootScope.$apply();
       }else{
         firebase.database().ref('/users/' + authUser.uid).once('value').then(function(snapshot) {
         var user = {};
@@ -35,7 +39,7 @@ $rootScope.currentUser={};
         user.date =  snapshot.val().date;
         user.firstname =  snapshot.val().firstname;
         user.lastname =  snapshot.val().lastname;
-        console.log("USER cons "+JSON.stringify(user));
+
          $rootScope.currentUser=user;
         $rootScope.$apply();
         });
@@ -72,6 +76,7 @@ $rootScope.currentUser={};
 
     register: function(user) {
       user.fullname = user.firstname+' '+user.lastname;
+      console.log('register method in auth'+user.fullname);
       auth.$createUserWithEmailAndPassword(
         user.email,
         user.password

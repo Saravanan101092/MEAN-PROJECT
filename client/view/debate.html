@@ -18,7 +18,7 @@
 					<div class="panel-body">
 						<ul class="chat lft" ng-model="currentPArgs">
 							<li class="left clearfix" ng-repeat="arg in currentPArgs"><span class="chat-img pull-left">
-                            <img ng-src="{{getAvatarSrc('Priya','Saravanan')}}" alt="User Avatar" class="img-circle">
+                            <img ng-src="{{getAvatarSrc(arg.user.firstname,arg.user.lastname,arg.user)}}" alt="User Avatar" class="img-circle imgwidth">
                         </span>
 								<div class="chat-body clearfix">
 									<div class="header">
@@ -52,11 +52,11 @@
 				<div class="panel-body">
 					<ul class="chat rgt" ng-model="currentNArgs">
 						<li class="left clearfix" ng-repeat="arg in currentNArgs"><span class="chat-img pull-left">
-                            <img ng-src="{{getAvatarSrc('Saravanan','Sampath')}}" alt="User Avatar" class="img-circle">
+                            <img ng-src="{{getAvatarSrc(arg.user.firstname,arg.user.lastname,arg.user)}}" class="img-circle imgwidth">
                         </span>
 							<div class="chat-body clearfix">
 								<div class="header">
-									<strong class="primary-font">{{arg.user.fullname}}</strong> <small class="pull-right text-muted">
+									<strong class="">{{arg.user.fullname}}</strong> <small class="pull-right text-muted">
 									<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt}}</small>
 								</div>
 								<p>

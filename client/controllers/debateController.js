@@ -9,6 +9,7 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 		//console.log("response for debateid and proINd N:"+JSON.stringify(response));
 		$scope.currentNArgs =[];
 		$scope.currentNArgs = response.data;
+		console.log(JSON.stringify(response.data));
 	});
 	$http.get('/saru/debate/'+$routeParams.debateId+'/arguments/Y').then(function(response){
 		//console.log("response for debateid and proINd Y:"+JSON.stringify(response));
@@ -29,9 +30,10 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 		argument.user={};
 		argument.user.email=$rootScope.currentUser.email;
 		argument.user.fullname=$rootScope.currentUser.fullname;
-		
+		argument.user.firstname = $rootScope.currentUser.firstname;
+		argument.user.lastname =$rootScope.currentUser.lastname;
 		argument.user.id=$rootScope.currentUser.regUser;
-
+		argument.user.photourl = $rootScope.currentUser.photourl;
 		var result = $http.post('/saru/arguments',argument).then(function(response){
 			console.log('argument response'+JSON.stringify(response));
 			if (argument.content.proInd === 'Y') {
@@ -48,10 +50,17 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 		});
 	}
 
-	$scope.getAvatarSrc = function(fname,lname){
-		var initial = fname.slice(0,1);
-		initial += lname.slice(0,1);
-		var src="http://placehold.it/50/55C1E7/fff&amp;text=";
-		return src+initial;
+	$scope.getAvatarSrc = function(fname,lname,user){
+		if(user.photourl){
+			console.log('returning photourl'+user.photourl);
+			return user.photourl;
+		}else {
+
+			var initial = fname.slice(0, 1);
+			initial += lname.slice(0, 1);
+			var src = "http://placehold.it/50/55C1E7/fff&amp;text=";
+			console.log("user:"+user.regUser+" "+src+" "+initial);
+			return src + initial;
+		}
 	}
 }]);
