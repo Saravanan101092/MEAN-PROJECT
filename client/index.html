@@ -72,15 +72,18 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav pull-right" ng-controller="LoginController">
                 <li>
                     <a href="#!login" ng-hide="currentUser">Login</a>
                 </li>
-                <li>
-                    <a href="" ng-show="currentUser">{{currentUser.firstname}}</a>
+                <li ng-show="currentUser">
+                    <a ng-model="currentUser.fullname"><strong>{{currentUser.fullname}}</strong></a>
                 </li>
                 <li>
                     <a href="#!registration" ng-hide="currentUser">Register</a>
+                </li>
+                 <li ng-show="currentUser">
+                    <a ng-href="#/login" ng-click="logout()">Logout</a>
                 </li>
             </ul>
         </div>

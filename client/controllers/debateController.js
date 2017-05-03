@@ -28,8 +28,8 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 		argument.content.proInd = pInd;
 		argument.user={};
 		argument.user.email=$rootScope.currentUser.email;
-		argument.user.firstname=$rootScope.currentUser.firstname;
-		argument.user.lastname=$rootScope.currentUser.lastname;
+		argument.user.fullname=$rootScope.currentUser.fullname;
+		
 		argument.user.id=$rootScope.currentUser.regUser;
 
 		var result = $http.post('/saru/arguments',argument).then(function(response){

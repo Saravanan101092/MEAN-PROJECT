@@ -2,12 +2,9 @@
 myApp.controller('LoginController',
     ['$scope', 'Authentication','$location',
         function($scope, Authentication,$location) {
-            console.log(Authentication.requireAuth());
-            if(Authentication.requireAuth()){
-                $location.path('/browseDebates');
-            }
+             console.log("LoginController");         
             $scope.login = function() {
-                console.log("login method");
+                console.log("login method"+JSON.stringify($scope.user));
                 Authentication.login($scope.user);
             };
 
@@ -21,4 +18,8 @@ myApp.controller('LoginController',
                 Authentication.register($scope.user);
             }; //register
 
+            $scope.loginWithFB = function(){
+                console.log("FB login");
+                Authentication.fbLogin();
+            };
         }]);
