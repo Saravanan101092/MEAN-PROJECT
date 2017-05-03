@@ -39,7 +39,7 @@ app.post('/saru/arguments', function(req, res){
 				res.status(500).send("Internal error during insert"+err);
 			}else{
 				console.log("Data successfully inserted!");
-				sendResponseJson(res,result.ops);
+				sendResponseJson(res,result.ops[0]);
 			}
 		});
 	}

@@ -12,6 +12,7 @@ module.exports = function(app,getDB){
 	app.createArgument= function(argument, cb){
 		if(argument!=null){
 			argument.content.crteDt = new Date();
+			console.log('adding argument'+JSON.stringify(argument));
 			getDB().collection('Arguments').insert(argument,cb);
 		}else{
 			console.log("Error null data cannot be inserted!");

@@ -1,10 +1,5 @@
 myApp.controller('DebateController',['$http','$scope', '$rootScope','$location','$routeParams',function($http,$scope,$rootScope,$location,$routeParams){
 	console.log("inside debate controller");
-	if(typeof $rootScope.debateuser !='undefined'){
-		console.log($rootScope.debateuser.displayName);
-	}else{
-		console.log('user data not available');
-	}
 	$http.get('/saru/debates/'+$routeParams.debateId).then(function(response){
 		//console.log("response for debateid:"+JSON.stringify(response));
 		$scope.currentDebate = response.data;
@@ -31,8 +26,14 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 		argument.content.supports = 0;
 		argument.content.disputes = 0;
 		argument.content.proInd = pInd;
+		argument.user={};
+		argument.user.email=$rootScope.currentUser.email;
+		argument.user.firstname=$rootScope.currentUser.firstname;
+		argument.user.lastname=$rootScope.currentUser.lastname;
+		argument.user.id=$rootScope.currentUser.regUser;
 
 		var result = $http.post('/saru/arguments',argument).then(function(response){
+			console.log('argument response'+JSON.stringify(response));
 			if (argument.content.proInd === 'Y') {
 				if ($scope.currentPArgs == 'undefined') {
 					$scope.currentPArgs = [];
@@ -45,5 +46,12 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 				$scope.currentNArgs.push(response.data);
 			}
 		});
+	}
+
+	$scope.getAvatarSrc = function(fname,lname){
+		var initial = fname.slice(0,1);
+		initial += lname.slice(0,1);
+		var src="http://placehold.it/50/55C1E7/fff&amp;text=";
+		return src+initial;
 	}
 }]);

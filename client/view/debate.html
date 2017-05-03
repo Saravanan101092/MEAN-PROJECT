@@ -15,32 +15,31 @@
 				<strong>FOR</strong>
 			</div>
 			<div class="col-sm-4" id="left">
-
-				<div class="w3-row" ng-model="currentPArgs">
-
-					<div class="tweet"
-						ng-repeat="arg in currentPArgs">
-						<div class = "dArg w3-card w3-hover-shadow argument">
-						<strong class="fullname">Saru</strong><span class="username">@mybff</span>
-						<p class="tweet-text" lang="en">{{arg.content.text}}</p>
-						<div class="tweet-actions" ng-show="authenticated">
-							<ul>
-								<li><span class="icon action-reply"></span> 21</li>
-								<li><span class="icon action-retweet"></span> 2</li>
-								<li><span class="icon action-favorite"></span> 50</li>
-								<li><span class="icon action-more"></span> More</li>
-							</ul>
+					<div class="panel-body">
+						<ul class="chat lft" ng-model="currentPArgs">
+							<li class="left clearfix" ng-repeat="arg in currentPArgs"><span class="chat-img pull-left">
+                            <img ng-src="{{getAvatarSrc('Priya','Saravanan')}}" alt="User Avatar" class="img-circle">
+                        </span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">{{arg.user.firstname+' '+arg.user.lastname}}</strong> <small class="pull-right text-muted">
+										<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt}}</small>
+									</div>
+									<p>
+										{{arg.content.text}}
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="panel-footer ip lft" ng-show="currentUser">
+						<div class="">
+							<textarea id="btn-input" rows="3" class="form-control input-sm" ng-model="txtPArg" placeholder="Make your point here"></textarea>
+                        <span class="input-group-addon btn btn-success" ng-click="addArgument(txtPArg,'Y')">
+                                Send
+                        </span>
 						</div>
 					</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group input-group ip" ng-show="authenticated">
-				<textarea class="form-control" rows="3" id="comment"
-					ng-model="txtPArg" placeholder="Make your point here"></textarea>
-				<span class="input-group-addon btn btn-success"
-					ng-click="addArgument(txtPArg,'Y')">Enter</span>
 			</div>
 		</div>
 
@@ -50,31 +49,31 @@
 			</div>
 			<div class="col-sm-4" id="right">
 
-				<div class="w3-row" ng-model="currentNArgs">
-
-					<div class="tweet"
-						ng-repeat="arg in currentNArgs">
-						<div class = "dArg w3-card w3-hover-shadow argument">
-						<strong class="fullname">Saru</strong><span class="username">@mybff</span>
-						<p class="tweet-text" lang="en">{{arg.content.text}}</p>
-						<div class="tweet-actions" ng-show="authenticated">
-							<ul>
-								<li><span class="icon action-reply"></span> 21</li>
-								<li><span class="icon action-retweet"></span> 2</li>
-								<li><span class="icon action-favorite"></span> 50</li>
-								<li><span class="icon action-more"></span> More</li>
-							</ul>
-						</div>
-					</div>
+				<div class="panel-body">
+					<ul class="chat rgt" ng-model="currentNArgs">
+						<li class="left clearfix" ng-repeat="arg in currentNArgs"><span class="chat-img pull-left">
+                            <img ng-src="{{getAvatarSrc('Saravanan','Sampath')}}" alt="User Avatar" class="img-circle">
+                        </span>
+							<div class="chat-body clearfix">
+								<div class="header">
+									<strong class="primary-font">{{arg.user.firstname+' '+arg.user.lastname}}</strong> <small class="pull-right text-muted">
+									<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt}}</small>
+								</div>
+								<p>
+									{{arg.content.text}}
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="panel-footer ip rgt" ng-show="currentUser">
+					<div class="">
+						<textarea id="btn-input" rows="3" ng-model="txtNArg" class="form-control input-sm" placeholder="Make your point here"></textarea>
+                        <span class="input-group-addon btn btn-success" ng-click="addArgument(txtNArg,'N')">
+                                Send
+                        </span>
 					</div>
 				</div>
-			</div>
-
-			<div class="form-group input-group ip" ng-show="authenticated">
-				<textarea class="form-control" rows="3" id="comment"
-					ng-model="txtNArg" placeholder="Make your point here"></textarea>
-				<span class="input-group-addon btn btn-success"
-					ng-click="addArgument(txtNArg,'N')">Enter</span>
 			</div>
 		</div>
 	</div>
