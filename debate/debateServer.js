@@ -1,4 +1,4 @@
-module.exports = function(app, sendResponseJson ){
+module.exports = function(app, sendResponseJson,io ){
 	
 app.get('/saru/debates', function(req, res ){
 	if(!app.connected()){

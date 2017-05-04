@@ -1,8 +1,27 @@
 myApp.controller('DebateController',['$http','$scope', '$rootScope','$location','$routeParams',function($http,$scope,$rootScope,$location,$routeParams){
 	console.log("inside debate controller");
+	var socket = io();
+	console.log("socketID"+socket.id);
+
+	socket.on('newArgumentInDebate',function(argument){
+		console.log("New Argument"+argument.content.text);
+		if (argument.content.proInd === 'Y') {
+			if ($scope.currentPArgs == 'undefined') {
+				$scope.currentPArgs = [];
+			}
+			$scope.currentPArgs.push(response.data);
+		} else {
+			if ($scope.currentNArgs === 'undefined') {
+				$scope.currentNArgs = [];
+			}
+			$scope.currentNArgs.push(response.data);
+		}
+	});
 	$http.get('/saru/debates/'+$routeParams.debateId).then(function(response){
 		//console.log("response for debateid:"+JSON.stringify(response));
 		$scope.currentDebate = response.data;
+		socket.emit('debateConnection',response.data);
+		console.log('debate connection emitted');
 	});
 	
 	$http.get('/saru/debate/'+$routeParams.debateId+'/arguments/N').then(function(response){
@@ -46,6 +65,8 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 					$scope.currentNArgs = [];
 				}
 				$scope.currentNArgs.push(response.data);
+				socket.emit('debateArgument',response.data);
+				console.log('debateArgument emitted');
 			}
 		});
 	}

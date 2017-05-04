@@ -1,6 +1,6 @@
 
     <div  ng-controller="LoginController" class="container sgbdy">
-
+<div class="form-signin">
       <form class="form-signin" name="myform" ng-submit="login()"
     novalidate>
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -16,9 +16,10 @@
       Password is required</p>
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="myform.$invalid">Sign in</button>
 		<br>
-		<p>Or if you have a facebook account</p>
-		<a href="" ng-click="loginWithFB()" title="Facebook" class="btn btn-block btn-facebook btn-lg"><i class="fa fa-facebook fa-fw"></i> Sign in with Facebook</a>
 
       </form>
-    </div> <!-- btn-facebook /container -->
+        <p>Or if you have a facebook account</p>
+        <a href="" ng-click="loginWithFB()" title="Facebook" class="btn btn-block btn-facebook btn-lg"> Sign in with Facebook</a>
+    </div>
+        </div><!-- btn-facebook /container -->
 

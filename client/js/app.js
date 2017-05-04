@@ -14,9 +14,11 @@ myApp.run(['$rootScope', '$location','$timeout', function($rootScope, $location,
    
     $rootScope.hideMsg = function(){
         $rootScope.message = "";
+        $rootScope.msgClass = "";
     }
-    $rootScope.showMsgBriefly = function(msg){
+    $rootScope.showMsgBriefly = function(msg,msgClas){
         $rootScope.message = msg;
+        $rootScope.msgClass = msgClas;
         $timeout(function(){$rootScope.hideMsg();},5000);
     }
 
