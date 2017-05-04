@@ -15,13 +15,12 @@ myApp.factory('Authentication',
 
   auth.$onAuthStateChanged(function(authUser) {
     var userB = firebase.auth().currentUser;
-    console.log("USERBF"+JSON.stringify(userB));
-    console.log("AuthUser"+JSON.stringify(authUser));
+
 
     if(authUser) {
 
       if(authUser.providerData[0].providerId=="facebook.com"){
-        console.log('facebook user');
+
         var user = {};
         user.fullname = authUser.providerData[0].displayName;
         user.email = authUser.providerData[0].email;
@@ -46,7 +45,7 @@ myApp.factory('Authentication',
         //var userRef = ref.child('users').child(authUser.uid);
         //var userObj = $firebaseObject(userRef);
        // $rootScope.currentUser = userObj;
-       console.log("scope!!"+JSON.stringify($rootScope.currentUser));
+
       }
     } else {
       console.log('setting user to null');
