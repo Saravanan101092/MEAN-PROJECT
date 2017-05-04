@@ -252,3 +252,7 @@ input.ng-valid.ng-touched {
 .imgwidth{
 	width:50px;
 }
+.footDebate{
+	bottom:0;
+	text-align: center;
+}

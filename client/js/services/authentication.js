@@ -50,6 +50,7 @@ myApp.factory('Authentication',
       }
     } else {
       console.log('setting user to null');
+
       $rootScope.currentUser = '';
     }
   });
@@ -62,12 +63,13 @@ myApp.factory('Authentication',
       ).then(function(user) {
         $location.path('/browseDebates');
       }).catch(function(error) {
-        $rootScope.message = error.message;
+        $rootScope.showMsgBriefly(error.message);
       }); //signInWithEmailAndPassword
     }, //login
 
     logout: function() {
       return auth.$signOut();
+      $rootScope.showMsgBriefly("Logged Out!");
     }, //logout
 
     requireAuth: function() {
@@ -93,7 +95,7 @@ myApp.factory('Authentication',
           }); //userinfo
           myObject.login(user);
       }).catch(function(error) {
-        $rootScope.message = error.message;
+        $rootScope.showMsgBriefly(error.message);
       }); //createUserWithEmailAndPassword
     }, //register
 
@@ -113,7 +115,7 @@ firebase.auth().signInWithPopup(fbprovider).then(function(result) {
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
-  var errorMessage = error.message;
+  $rootScope.showMsgBriefly(error.message);
   // The email of the user's account used.
   var email = error.email;
   // The firebase.auth.AuthCredential type that was used.

@@ -4,13 +4,23 @@
 
 var myApp = angular.module("myApp", ["ngRoute","ngCookies","firebase"]);
 
-myApp.run(['$rootScope', '$location', function($rootScope, $location) {
+myApp.run(['$rootScope', '$location','$timeout', function($rootScope, $location,$timeout) {
     $rootScope.$on('$routeChangeError', function(event, next, previous, error) {
         if (error == 'AUTH_REQUIRED') {
             $rootScope.message = 'Sorry, you must log in to access that page';
             $location.path('/login');
         }//Auth Required
     }); //$routeChangeError
+   
+    $rootScope.hideMsg = function(){
+        $rootScope.message = "";
+    }
+    $rootScope.showMsgBriefly = function(msg){
+        $rootScope.message = msg;
+        $timeout(function(){$rootScope.hideMsg();},5000);
+    }
+
+   
 }]);
 
 myApp.config(['$qProvider', function ($qProvider) {
