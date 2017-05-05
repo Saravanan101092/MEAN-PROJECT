@@ -12,7 +12,6 @@ module.exports = function(app,getDB){
 	app.createArgument= function(argument, cb){
 		if(argument!=null){
 			argument.content.crteDt = new Date();
-			console.log('adding argument'+JSON.stringify(argument));
 			getDB().collection('Arguments').insert(argument,cb);
 		}else{
 			console.log("Error null data cannot be inserted!");
@@ -69,7 +68,6 @@ module.exports = function(app,getDB){
 	};
 	app.getArgsForQID= function (id, proIn, cb){
 		if(id!=null){
-			console.log("debate:"+id+" pro:"+proIn);
 			var cursor = getDB().collection('Arguments').find({debateId: id,"content.proInd": proIn});
 			cursor.toArray(cb);
 		}else{

@@ -8,20 +8,19 @@ app.get('/saru/argument', function(req, res ){
 		console.log("DB connection error")
 	}
 	app.getArguments(function(err, data){
-		console.log("size:"+data.length);
 		sendResponseJson(res,data[0]);
 	});
 	
 });
 
 app.get('/saru/argument/:id', function(req, res ){
-	console.log("request received with id"+req.params.id);
+
 	if(!app.connected()){
 		console.log("DB connection error")
 	}
 	
 	app.getArgumentForID(req.params.id,function(err, data){
-		console.log("size:"+JSON.stringify(data));
+
 		sendResponseJson(res,data[0]);
 	});
 	
@@ -89,7 +88,6 @@ app.get('/saru/debate/:debateID/arguments/:proInd',function(req,res){
 	}
 	if(req.params.proInd == 'Y' || req.params.proInd == 'N' ){
 		app.getArgsForQID(req.params.debateID,req.params.proInd,function(err, data){
-			console.log("size:"+JSON.stringify(data));
 			sendResponseJson(res,data);
 		});
 	}
@@ -100,7 +98,6 @@ app.get('/saru/debate/:debateID/arguments', function(req,res){
 		console.log("DB connection error")
 	}
 	app.getAllArgsForQID(req.params.debateID,function(err, data){
-		console.log("size:"+JSON.stringify(data));
 		sendResponseJson(res,data);
 	});
 });

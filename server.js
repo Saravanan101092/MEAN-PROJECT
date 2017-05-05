@@ -7,34 +7,17 @@ var ObjectId = require('mongodb').ObjectID;
 var bodyParser = require('body-parser');
 var consolidate = require('consolidate');
 var path    = require("path");
-
+var connect = require('connect')
 var app = express();
-var server = require('http').Server(app);
+var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-io.on('connection', function(socket){
-    console.log("user connected"+JSON.stringify(socket));
-    socket.on('debateConnection',function(debateobject){
-        console.log('debate connection'+JSON.stringify(debateobject));
-        socket.join(debateobject._id);
-    });
-    socket.on('debateArgument',function(argument){
-        console.log('New argument:'+JSON.stringify(argument));
-        socket.broadcast.to(argument.debateId).emit('newArgumentInDebate', argument);
-    });
-   // socket.join('');
-});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-var callbackUrl = 'https://sarudebates.herokuapp.com/login/facebook/return';
-if(process.argv[2]) {
-  callbackUrl='http://localhost:8087/login/facebook/return';
-}
-console.log('callback url facebook is'+callbackUrl);
 app.use(express.static(__dirname + '/client'));
   // assign the template engine to .html files
   app.engine('html', consolidate['swig']);
@@ -80,6 +63,31 @@ app.get('/',
       res.sendFile(path.join(__dirname+'/client/index.html'));
     });
 
-app.listen(process.env.PORT || 8087, function() {
+server.listen(process.env.PORT || 8087, function() {
 	console.log("Listening on port 8087");
+});
+//io.listen(app);
+
+//io.on('connection', function(socket){
+//    console.log("user connected"+JSON.stringify(socket));
+//    socket.on('debateConnection',function(debateobject){
+//        console.log('debate connection'+JSON.stringify(debateobject));
+//        socket.join(debateobject._id);
+//    });
+//    socket.on('debateArgument',function(argument){
+//        console.log('New argument:'+JSON.stringify(argument));
+//        socket.broadcast.to(argument.debateId).emit('newArgumentInDebate', argument);
+//    });
+//    // socket.join('');
+//});
+
+io.sockets.on('connection', function(socket) {
+    console.log('user connected');
+    socket.emit('change', 'welcome from server');
+
+    socket.on('change', function(obj) {
+        console.log("debate specific obj:"+JSON.stringify(obj));
+        console.log("Emiting arg:"+JSON.stringify(obj.debateId));
+        socket.broadcast.emit(obj.debateId, obj);
+    });
 });
