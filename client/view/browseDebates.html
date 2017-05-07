@@ -3,7 +3,7 @@
 	<div class="w3-container w3-row ">
 		<div class="jumbotron" ng-model="allDebates">
 			<div class="dArg w3-panel w3-card w3-hover-shadow "
-				ng-repeat="thisdebate in allDebates">
+				ng-repeat="thisdebate in allDebates" data-toggle="tooltip" data-placement="bottom" title="Click to participate in the debate">
 				<a href="#!/debate/{{thisdebate._id}}">
 					<h2>{{thisdebate.question}}</h2>
 					<p>{{thisdebate.content.desc}}</p>

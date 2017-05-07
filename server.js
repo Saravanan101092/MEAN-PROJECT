@@ -85,9 +85,12 @@ io.sockets.on('connection', function(socket) {
     console.log('user connected');
     socket.emit('change', 'welcome from server');
 
-    socket.on('change', function(obj) {
-        console.log("debate specific obj:"+JSON.stringify(obj));
-        console.log("Emiting arg:"+JSON.stringify(obj.debateId));
+    socket.on('newArg', function(obj) {
         socket.broadcast.emit(obj.debateId, obj);
     });
+
+    socket.on('disconnect', function() {
+        console.log("user disconnected");
+    });
 });
+

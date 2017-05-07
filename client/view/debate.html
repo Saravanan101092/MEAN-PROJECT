@@ -23,7 +23,7 @@
 								<div class="chat-body clearfix">
 									<div class="header">
 										<strong class="primary-font">{{arg.user.fullname}}</strong> <small class="pull-right text-muted">
-										<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt}}</small>
+										<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt  | date:'hh.mm.ss a, MM/dd/yyyy'}}</small>
 									</div>
 									<p>
 										{{arg.content.text}}
@@ -57,7 +57,7 @@
 							<div class="chat-body clearfix">
 								<div class="header">
 									<strong class="">{{arg.user.fullname}}</strong> <small class="pull-right text-muted">
-									<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt}}</small>
+									<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt | date:'hh.mm.ss a, MM/dd/yyyy'}}</small>
 								</div>
 								<p>
 									{{arg.content.text}}

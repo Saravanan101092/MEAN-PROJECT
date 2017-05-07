@@ -61,14 +61,17 @@ myApp.factory('Authentication',
         user.password
       ).then(function(user) {
         $location.path('/browseDebates');
+        $rootScope.showMsgBriefly("Log in successful","alert-success");
       }).catch(function(error) {
         $rootScope.showMsgBriefly(error.message,'alert-danger');
+            console.log("Login error:"+error.message);
       }); //signInWithEmailAndPassword
     }, //login
 
     logout: function() {
       return auth.$signOut();
       $rootScope.showMsgBriefly("Logged Out!","alert-success");
+      $rootScope.$apply();
     }, //logout
 
     requireAuth: function() {
@@ -92,7 +95,16 @@ myApp.factory('Authentication',
             fullname: user.fullname,
             email: user.email
           }); //userinfo
-          myObject.login(user);
+
+          regUser.sendEmailVerification().then(function() {
+              // Email sent.
+            console.log('Email verification sent');
+            $rootScope.showMsgBriefly("Verification email sent!. Please check you email inbox!","alert-success");
+            }, function(error) {
+              // An error happened.
+            console.log('Error while sending verification email :'+error.message);
+            });
+         myObject.login(user);
       }).catch(function(error) {
         $rootScope.showMsgBriefly(error.message,'alert-danger');
       }); //createUserWithEmailAndPassword

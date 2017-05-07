@@ -58,7 +58,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
         })
         .when("/debate/:debateId", {
             templateUrl: "view/debate.html",
-            controller: "DebateController"
+           // controller: "DebateController"
         })
         .otherwise({redirectTo: '/login'});
 });

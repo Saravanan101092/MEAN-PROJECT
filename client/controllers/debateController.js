@@ -90,7 +90,7 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 				$scope.currentNArgs.push(response.data);
 				$scope.txtNArg="";
 			}
-			socket.emit('change', response.data);
+			socket.emit('newArg', response.data);
 		});
 	}
 
