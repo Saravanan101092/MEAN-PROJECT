@@ -28,13 +28,20 @@
 									<p>
 										{{arg.content.text}}
 									</p>
+									<div class="tweet-actions" ng-show="currentUser">
+										<ul>
+											<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span> 21</li>
+											<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span> 2</li>
+											<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span> 50</li>
+										</ul>
+									</div>
 								</div>
 							</li>
 						</ul>
 					</div>
 					<div class="panel-footer ip lft" ng-show="currentUser">
 						<div class="">
-							<textarea id="btn-input" rows="3" class="form-control input-sm" ng-model="txtPArg" placeholder="Make your point here"></textarea>
+							<textarea rows="3" class="form-control input-sm" ng-model="txtPArg" placeholder="Make your point here"></textarea>
                         <span class="input-group-addon btn btn-success" ng-click="addArgument(txtPArg,'Y')">
                                 Send
                         </span>
@@ -62,13 +69,20 @@
 								<p>
 									{{arg.content.text}}
 								</p>
+								<div class="tweet-actions" ng-show="currentUser">
+									<ul>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span> 21</li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span> 2</li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span> 50</li>
+									</ul>
+								</div>
 							</div>
 						</li>
 					</ul>
 				</div>
 				<div class="panel-footer ip rgt" ng-show="currentUser">
 					<div class="">
-						<textarea id="btn-input" rows="3" ng-model="txtNArg" class="form-control input-sm" placeholder="Make your point here"></textarea>
+						<textarea rows="3" ng-model="txtNArg" class="form-control input-sm" placeholder="Make your point here"></textarea>
                         <span class="input-group-addon btn btn-success" ng-click="addArgument(txtNArg,'N')">
                                 Send
                         </span>

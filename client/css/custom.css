@@ -48,7 +48,7 @@ body, html {
 
 	
   #left {
-	  padding-top: 1%;
+	padding-top: 1%;
     left:0;
 	position: fixed;
 	height: 67%;
@@ -58,7 +58,7 @@ body, html {
   }
   
   #right {
-	  padding-top: 1%;
+	padding-top: 1%;
 	right:0;
     position: fixed;
 	height: 67%;
@@ -263,4 +263,9 @@ input.ng-valid.ng-touched {
 	top:6%;
 	right:1%;
 	left:1%;
+}
+
+.panel-footer{
+	padding-top: 2px;
+	padding-left: 4px;
 }
