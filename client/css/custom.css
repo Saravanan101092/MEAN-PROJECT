@@ -269,3 +269,12 @@ input.ng-valid.ng-touched {
 	padding-top: 2px;
 	padding-left: 4px;
 }
+.green{
+	color: green;
+}
+.red{
+	color: red;
+}
+.glyphicon:hover{
+	font-size: large;
+}

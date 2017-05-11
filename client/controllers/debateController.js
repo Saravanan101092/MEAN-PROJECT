@@ -6,7 +6,45 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 		console.log("hellow message from server"+JSON.stringify(obj));
 	});
 
-	$scope.addDebateConn = function() {
+	var checkSupported = function(argument){
+		var email = $rootScope.currentUser.email;
+		var flag = false;
+		if(argument) {
+			angular.forEach(argument.content.supports, function (value, key) {
+				if (JSON.stringify(email) === JSON.stringify(value.s_email)) {
+					flag = true;
+				}
+			});
+		}
+		return flag;
+	}
+
+	$scope.getSupported = function(argument){
+		if(checkSupported(argument)){
+			return 'green';
+		}
+	}
+	var checkDisputed = function(argument){
+		var email = $rootScope.currentUser.email;
+		var flag = false;
+		if(argument) {
+			angular.forEach(argument.content.disputes, function (value, key) {
+				if (JSON.stringify(email) === JSON.stringify(value.s_email)) {
+					flag = true;
+				}
+			});
+		}
+		console.log('checkdisputed flag'+flag);
+		return flag;
+	}
+
+	$scope.getDisputed = function(argument){
+		if(checkDisputed(argument)){
+			return 'red';
+		}
+	}
+
+	var addDebateConn = function() {
 		console.log('listening to debate room'+$scope.currentDebate._id)
 		socket.on($scope.currentDebate._id, function (argument) {
 			//console.log('debate specific message'+JSON.stringify(argument));
@@ -28,7 +66,8 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 	$http.get('/saru/debates/'+$routeParams.debateId).then(function(response){
 		//console.log("response for debateid:"+JSON.stringify(response));
 		$scope.currentDebate = response.data;
-		console.log('listening to debate room'+$scope.currentDebate._id)
+		console.log('listening to debate room'+$scope.currentDebate._id);
+		addDebateConn();
 		socket.on($scope.currentDebate._id, function (argument) {
 			console.log('debate specific message'+JSON.stringify(argument));
 			if (argument.content.proInd === 'Y') {
@@ -94,10 +133,11 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 		});
 	}
 
-	$scope.getAvatarSrc = function(fname,lname,user){
-		if(user.photourl){
+	$scope.getAvatarSrc = function(fname,lname,user) {
+		if (user) {
+		if (typeof user.photourl != 'undefined') {
 			return user.photourl;
-		}else {
+		} else {
 
 			var initial = fname.slice(0, 1);
 			initial += lname.slice(0, 1);
@@ -105,55 +145,64 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 			return src + initial;
 		}
 	}
+	}
+
 
 	$scope.addSupport = function(argument,index){
 		var user = {};
 		user.s_email = $rootScope.currentUser.email;
 		user.name = $rootScope.currentUser.fullname;
 		var updatedArg = {};
-		$http.post('/saru/arguments/'+argument._id+'/support/add',user).then(function(response){
-			console.log("support added");
+		var api = "";
+		if(checkSupported(argument)){
+			api = '/saru/arguments/'+argument._id+'/support/remove';
+		}else{
+			api='/saru/arguments/'+argument._id+'/support/add';
+		}
+		$http.put(api,user).then(function(response){
+			console.log("support added/removed"+api);
 			$http.get('/saru/argument/'+argument._id).then(function(response){
 				updatedArg = response.data;
+				console.log('updated arg'+JSON.stringify(updatedArg));
+				if (argument.content.proInd === 'Y') {
+					$scope.currentPArgs[index] =  updatedArg;
+				}else{
+					$scope.currentNArgs[index] =  updatedArg;
+				}
 			});
 		});
-		updatedArg.supportFlag = true;
-		if (argument.content.proInd === 'Y') {
-			$scope.currentPArgs[index] =  updatedArg;
-		}else{
-			$scope.currentNArgs[index] =  updatedArg;
-		}
-		$scope.$apply();
+
+		//$scope.$apply();
 	}
-	$scope.removeSupport = function(){
+
+	$scope.addDispute = function(argument,index){
 		var user = {};
 		user.s_email = $rootScope.currentUser.email;
 		user.name = $rootScope.currentUser.fullname;
 		var updatedArg = {};
-		$http.post('/saru/arguments/'+argument._id+'/support/remove',user).then(function(response){
-			console.log("support removed");
+		var api = "";
+		if(checkDisputed(argument)){
+			api = '/saru/arguments/'+argument._id+'/dispute/remove';
+		}else{
+			api='/saru/arguments/'+argument._id+'/dispute/add';
+		}
+		$http.put(api,user).then(function(response){
+			console.log("dispute added/removed"+api);
 			$http.get('/saru/argument/'+argument._id).then(function(response){
 				updatedArg = response.data;
+				console.log('updated arg'+JSON.stringify(updatedArg));
+				if (argument.content.proInd === 'Y') {
+					$scope.currentPArgs[index] =  updatedArg;
+				}else{
+					$scope.currentNArgs[index] =  updatedArg;
+				}
 			});
 		});
-		updatedArg.supportFlag = false;
-		if (argument.content.proInd === 'Y') {
-			$scope.currentPArgs[index] =  updatedArg;
-		}else{
-			$scope.currentNArgs[index] =  updatedArg;
-		}
-		$scope.$apply();
-	}
-	$scope.addDispute = function(){
 
 	}
-	$scope.removeDispute = function(){
-		
-	}
+
 	$scope.addCounter = function(){
 
 	}
-	$scope.removeCounter = function(){
-		
-	}
+
 }]);

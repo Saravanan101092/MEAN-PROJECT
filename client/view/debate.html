@@ -1,96 +1,136 @@
 <div ng-controller="DebateController">
-	<div class="debate-panel">
-		<div>
-			<div class="panel panel-success">
-				<h3 class="page-header" ng-show="currentDebate.question">
-					{{currentDebate.question}} <small
-						ng-show="currentDebate.content.desc">{{currentDebate.content.desc}}</small>
-				</h3>
-			</div>
-		</div>
-	</div>
-	<div>
-		<div class="for-panel panel">
-			<div class="panel-heading">
-				<strong>FOR</strong>
-			</div>
-			<div class="col-sm-4" id="left">
-					<div class="panel-body">
-						<ul class="chat lft" ng-model="currentPArgs">
-							<li class="left clearfix" ng-repeat="arg in currentPArgs"><span class="chat-img pull-left">
-                            <img ng-src="{{getAvatarSrc(arg.user.firstname,arg.user.lastname,arg.user)}}" alt="User Avatar" class="img-circle imgwidth">
+    <div class="debate-panel">
+        <div>
+            <div class="panel panel-success">
+                <h3 class="page-header" ng-show="currentDebate.question">
+                    {{currentDebate.question}}
+                    <small
+                            ng-show="currentDebate.content.desc">{{currentDebate.content.desc}}
+                    </small>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="for-panel panel">
+            <div class="panel-heading">
+                <strong>FOR</strong>
+            </div>
+            <div class="col-sm-4" id="left">
+                <div class="panel-body">
+                    <ul class="chat lft" ng-model="currentPArgs">
+                        <li class="left clearfix" ng-repeat="arg in currentPArgs"><span class="chat-img pull-left">
+                            <img ng-src="{{getAvatarSrc(arg.user.firstname,arg.user.lastname,arg.user)}}"
+                                 alt="User Avatar" class="img-circle imgwidth">
                         </span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">{{arg.user.fullname}}</strong> <small class="pull-right text-muted">
-										<span class="glyphicon glyphicon-time"></span> {{arg.content.crteDt  | date:'hh.mm.ss a, MM/dd/yyyy'}}</small>
-									</div>
-									<p>
-										{{arg.content.text}}
-									</p>
-									<div class="tweet-actions" ng-show="currentUser">
-									<ul>
-										<li><a ng-click="addSupport(arg,$index)"><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span></a><span data-toggle="tooltip" data-placement="bottom" title="{{arg.content.supports}}"> {{arg.content.supports.length}}</span></li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span><span data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.disputes.length}}</span></li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span><span data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span></li>
-									</ul>
-								</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="panel-footer ip lft" ng-show="currentUser">
-						<div class="">
-							<textarea rows="3" class="form-control input-sm" ng-model="txtPArg" placeholder="Make your point here"></textarea>
+
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{arg.user.fullname}}</strong>
+                                    <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> {{arg.content.crteDt |
+                                        date:'hh.mm.ss a, MM/dd/yyyy'}}
+                                    </small>
+                                </div>
+                                <p>
+                                    {{arg.content.text}}
+                                </p>
+
+                                <div class="tweet-actions" ng-show="currentUser">
+                                    <strong> <ul>
+                                        <li><a ng-click="addSupport(arg,$index)"><span data-toggle="tooltip"
+                                                                                       data-placement="bottom"
+                                                                                       title="Agree" ng-class="getSupported(arg)"
+                                                                                       class="glyphicon glyphicon-thumbs-up"></span></a><span
+                                                data-toggle="tooltip" data-placement="bottom"
+                                                title="{{arg.content.supports}}"> {{arg.content.supports.length}}</span>
+                                        </li>
+                                        <li><a ng-click="addDispute(arg,$index)"><span data-toggle="tooltip" data-placement="bottom" title="Disagree"
+                                                                                       ng-class="getDisputed(arg)" class="glyphicon glyphicon-thumbs-down"></span></a><span
+                                                data-toggle="tooltip" data-placement="bottom" title="{{arg.content.disputes}}"> {{arg.content.disputes.length}}</span>
+                                        </li>
+                                        <li><span data-toggle="tooltip" data-placement="bottom" title="Counter"
+                                                  class="glyphicon glyphicon-comment"></span><span
+                                                data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span>
+                                        </li>
+                                    </ul></strong>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer ip lft" ng-show="currentUser">
+                    <div class="">
+                        <textarea rows="3" class="form-control input-sm" ng-model="txtPArg"
+                                  placeholder="Make your point here"></textarea>
                         <span class="input-group-addon btn btn-success" ng-click="addArgument(txtPArg,'Y')">
                                 Send
                         </span>
-						</div>
-					</div>
-			</div>
-		</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="ag-panel panel">
-			<div class="panel-heading">
-				<strong>AGAINST</strong>
-			</div>
-			<div class="col-sm-4" id="right">
+        <div class="ag-panel panel">
+            <div class="panel-heading">
+                <strong>AGAINST</strong>
+            </div>
+            <div class="col-sm-4" id="right">
 
-				<div class="panel-body">
-					<ul class="chat rgt" ng-model="currentNArgs">
-						<li class="left clearfix" ng-repeat="arg in currentNArgs"><span class="chat-img pull-left">
-                            <img ng-src="{{getAvatarSrc(arg.user.firstname,arg.user.lastname,arg.user)}}" class="img-circle imgwidth">
+                <div class="panel-body">
+                    <ul class="chat rgt" ng-model="currentNArgs">
+                        <li class="left clearfix" ng-repeat="arg in currentNArgs"><span class="chat-img pull-left">
+                            <img ng-src="{{getAvatarSrc(arg.user.firstname,arg.user.lastname,arg.user)}}"
+                                 class="img-circle imgwidth">
                         </span>
-							<div class="chat-body clearfix">
-								<div class="header">
-									<strong class="">{{arg.user.fullname}}</strong> <small class="pull-right text-muted">
-									<span class="glyphicon glyphicon-time"></span> {{arg.content.crteDt | date:'hh.mm.ss a, MM/dd/yyyy'}}</small>
-								</div>
-								<p>
-									{{arg.content.text}}
-								</p>
-								<div class="tweet-actions" ng-show="currentUser">
-									<ul>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span><span data-toggle="tooltip" data-placement="bottom" title="{{arg.content.supports}}"> {{arg.content.supports.length}}</span></li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span><span data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.disputes.length}}</span></li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span><span data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span></li>
-									</ul>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="panel-footer ip rgt" ng-show="currentUser">
-					<div class="">
-						<textarea rows="3" ng-model="txtNArg" class="form-control input-sm" placeholder="Make your point here"></textarea>
+
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="">{{arg.user.fullname}}</strong>
+                                    <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> {{arg.content.crteDt |
+                                        date:'hh.mm.ss a, MM/dd/yyyy'}}
+                                    </small>
+                                </div>
+                                <p>
+                                    {{arg.content.text}}
+                                </p>
+
+                                <div class="tweet-actions" ng-show="currentUser">
+                                    <strong> <ul>
+                                        <li><a ng-click="addSupport(arg,$index)"><span data-toggle="tooltip"
+                                                                                       data-placement="bottom"
+                                                                                       title="Agree" ng-class="getSupported(arg)"
+                                                                                       class="glyphicon glyphicon-thumbs-up"></span></a><span
+                                                data-toggle="tooltip" data-placement="bottom"
+                                                title="{{arg.content.supports}}"> {{arg.content.supports.length}}</span>
+                                        </li>
+                                        <li><a ng-click="addDispute(arg,$index)"><span data-toggle="tooltip" data-placement="bottom" title="Disagree"
+                                                                                       ng-class="getDisputed(arg)" class="glyphicon glyphicon-thumbs-down"></span></a><span
+                                                data-toggle="tooltip" data-placement="bottom" title="{{arg.content.disputes}}"> {{arg.content.disputes.length}}</span>
+                                        </li>
+                                        <li><span data-toggle="tooltip" data-placement="bottom" title="Counter"
+                                                  class="glyphicon glyphicon-comment"></span><span
+                                                data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span>
+                                        </li>
+                                    </ul></strong>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer ip rgt" ng-show="currentUser">
+                    <div class="">
+                        <textarea rows="3" ng-model="txtNArg" class="form-control input-sm"
+                                  placeholder="Make your point here"></textarea>
                         <span class="input-group-addon btn btn-success" ng-click="addArgument(txtNArg,'N')">
                                 Send
                         </span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
