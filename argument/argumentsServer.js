@@ -8,7 +8,7 @@ app.get('/saru/argument', function(req, res ){
 		console.log("DB connection error")
 	}
 	app.getArguments(function(err, data){
-		sendResponseJson(res,data[0]);
+		sendResponseJson(res,data);
 	});
 	
 });
@@ -99,6 +99,17 @@ app.get('/saru/debate/:debateID/arguments', function(req,res){
 	}
 	app.getAllArgsForQID(req.params.debateID,function(err, data){
 		sendResponseJson(res,data);
+	});
+});
+
+app.get('/saru/arguments/deleteall',function(req,res){
+	console.log("!!! Delete All Arguments Method triggered !!!");
+	app.deleteAllArguments(function(err,numberRemoved){
+		if(typeof err == 'undefined'){
+			console.log("Error during delete All "+err.message);
+		}
+		console.log(numberRemoved+" arguments deleted");
+		sendResponseJson(res,numberRemoved);
 	});
 });
 }

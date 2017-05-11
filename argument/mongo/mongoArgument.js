@@ -84,5 +84,8 @@ module.exports = function(app,getDB){
 			cb();
 		}
 	};
-
+	app.deleteAllArguments= function(cb){
+		console.log("Delete mongo auguments");
+		getDB().collection('Arguments').remove({},cb);
+	};
 }

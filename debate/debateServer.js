@@ -79,4 +79,15 @@ app.delete('/saru/debates', function(req,res){
 	}
 });
 
+app.get('/saru/debate/deleteall',function(req,res){
+	console.log("!!! Delete All Debates Method triggered !!!");
+	app.deleteAllDebates(function(err,numberRemoved){
+		if(typeof err == 'undefined'){
+			console.log("Error during delete All "+err.message);
+		}
+		console.log(numberRemoved+" debates deleted");
+		sendResponseJson(res,numberRemoved);
+	});
+});
+
 }

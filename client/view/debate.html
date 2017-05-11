@@ -23,18 +23,18 @@
 								<div class="chat-body clearfix">
 									<div class="header">
 										<strong class="primary-font">{{arg.user.fullname}}</strong> <small class="pull-right text-muted">
-										<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt  | date:'hh.mm.ss a, MM/dd/yyyy'}}</small>
+										<span class="glyphicon glyphicon-time"></span> {{arg.content.crteDt  | date:'hh.mm.ss a, MM/dd/yyyy'}}</small>
 									</div>
 									<p>
 										{{arg.content.text}}
 									</p>
 									<div class="tweet-actions" ng-show="currentUser">
-										<ul>
-											<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span> 21</li>
-											<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span> 2</li>
-											<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span> 50</li>
-										</ul>
-									</div>
+									<ul>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span><span data-toggle="tooltip" data-placement="bottom" title="users"> 21</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
+									</ul>
+								</div>
 								</div>
 							</li>
 						</ul>
@@ -64,16 +64,16 @@
 							<div class="chat-body clearfix">
 								<div class="header">
 									<strong class="">{{arg.user.fullname}}</strong> <small class="pull-right text-muted">
-									<span class="glyphicon glyphicon-time"></span>{{arg.content.crteDt | date:'hh.mm.ss a, MM/dd/yyyy'}}</small>
+									<span class="glyphicon glyphicon-time"></span> {{arg.content.crteDt | date:'hh.mm.ss a, MM/dd/yyyy'}}</small>
 								</div>
 								<p>
 									{{arg.content.text}}
 								</p>
 								<div class="tweet-actions" ng-show="currentUser">
 									<ul>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span> 21</li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span> 2</li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span> 50</li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
 									</ul>
 								</div>
 							</div>

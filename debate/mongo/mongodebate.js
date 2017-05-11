@@ -45,5 +45,7 @@ module.exports = function(app,getDB){
 			cb();
 		}
 	};
-
+	app.deleteAllDebates= function(cb){
+		getDB().collection('Debates').remove({},cb);
+	};
 }
