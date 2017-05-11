@@ -112,4 +112,76 @@ app.get('/saru/arguments/deleteall',function(req,res){
 		sendResponseJson(res,numberRemoved);
 	});
 });
+
+app.put('/saru/arguments/:argumentID/support/add',function(req,res){
+
+	app.addSupport(req.params.argumentID,req.body,function(err,result){
+ 			if(err!=null){
+				 console.log("Error during adding support"+err);
+				 res.status(500).send("Internal error during update"+err);
+			 }else{
+				 sendResponseJson(res,result);
+			 }
+	});
+});
+
+app.put('/saru/arguments/:argumentID/support/remove',function(req,res){
+
+	app.removeSupport(req.params.argumentID,req.body,function(err,result){
+ 			if(err!=null){
+				 console.log("Error during removing support"+err);
+				 res.status(500).send("Internal error during update"+err);
+			 }else{
+				 sendResponseJson(res,result);
+			 }
+	});
+});
+
+app.put('/saru/arguments/:argumentID/dispute/add',function(req,res){
+
+	app.addDispute(req.params.argumentID,req.body,function(err,result){
+ 			if(err!=null){
+				 console.log("Error during adding dispute"+err);
+				 res.status(500).send("Internal error during update"+err);
+			 }else{
+				 sendResponseJson(res,result);
+			 }
+	});
+});
+
+app.put('/saru/arguments/:argumentID/dispute/remove',function(req,res){
+
+	app.removeDispute(req.params.argumentID,req.body,function(err,result){
+ 			if(err!=null){
+				 console.log("Error during removing dispute"+err);
+				 res.status(500).send("Internal error during update"+err);
+			 }else{
+				 sendResponseJson(res,result);
+			 }
+	});
+});
+
+app.put('/saru/arguments/:argumentID/counter/add/:counterID',function(req,res){
+
+	app.addCounter(req.params.argumentID,req.params.counterID,function(err,result){
+ 			if(err!=null){
+				 console.log("Error during adding support"+err);
+				 res.status(500).send("Internal error during update"+err);
+			 }else{
+				 sendResponseJson(res,result);
+			 }
+	});
+});
+
+app.put('/saru/arguments/:argumentID/counter/remove/:counterID',function(req,res){
+
+	app.removeCounter(req.params.argumentID,req.params.counterID,function(err,result){
+ 			if(err!=null){
+				 console.log("Error during removing support"+err);
+				 res.status(500).send("Internal error during update"+err);
+			 }else{
+				 sendResponseJson(res,result);
+			 }
+	});
+});
 }

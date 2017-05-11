@@ -23,7 +23,7 @@ module.exports = function(app,getDB){
 		 if(argument!=null){
 			var id = argument._id;
 			argument.content.mdfydDt = new Date();
-			getDB().collection('Arguments').updateOne({_id: new ObjectID(id)},{
+			getDB().collection('Arguments').updateOne({_id: new ObjectId(id)},{
 			$set: { content: argument.content }},
 			cb);
 		}else{
@@ -33,7 +33,7 @@ module.exports = function(app,getDB){
 	};
 	app.deleteArgument= function(argument, cb){
 		if(argument!=null){
-			getDB().collection('Arguments').deleteOne({_id: new ObjectID(argument._id)},cb);
+			getDB().collection('Arguments').deleteOne({_id: new ObjectId(argument._id)},cb);
 		}else{
 			console.log("Error null data cannot be inserted!");
 			cb();
@@ -41,7 +41,7 @@ module.exports = function(app,getDB){
 	};
 	app.getArgumentForID= function(id,cb){
 		if(id!=null){
-			var cursor = getDB().collection('Arguments').find({_id: new ObjectID(id)});
+			var cursor = getDB().collection('Arguments').find({_id: new ObjectId(id)});
 			cursor.toArray(cb);
 		}else{
 			console.log("Id is null");
@@ -87,5 +87,35 @@ module.exports = function(app,getDB){
 	app.deleteAllArguments= function(cb){
 		console.log("Delete mongo auguments");
 		getDB().collection('Arguments').remove({},cb);
+	};
+	app.addSupport = function(id,user,cb){
+		getDB().collection('Arguments').updateOne({_id: new ObjectId(id)},{
+			$push: { "content.supports": user }},
+			cb);
+	};
+	app.removeSupport = function(id,user,cb){
+		getDB().collection('Arguments').updateOne({_id: new ObjectId(id)},{
+			$pull: { "content.supports": {"s_email":user.s_email, "name": user.name}} },
+			cb);
+	};
+	app.addDispute = function(id,user,cb){
+		getDB().collection('Arguments').updateOne({_id: new ObjectId(id)},{
+			$push: { "content.disputes": user }},
+			cb);
+	};
+	app.removeDispute = function(id,user,cb){
+		getDB().collection('Arguments').updateOne({_id: new ObjectId(id)},{
+			$pull: { "content.disputes": {"s_email":user.s_email, "name": user.name}} },
+			cb);
+	};
+	app.addCounter = function(id,argumentId,cb){
+		getDB().collection('Arguments').updateOne({_id: new ObjectId(id)},{
+			$push: { "content.counters": argumentId }},
+			cb);
+	};
+	app.removeCounter = function(id,argumentId,cb){
+		getDB().collection('Arguments').updateOne({_id: new ObjectId(id)},{
+			$pull: { "content.counters": { $in: [argumentId]}} },
+			cb);
 	};
 }

@@ -30,9 +30,9 @@
 									</p>
 									<div class="tweet-actions" ng-show="currentUser">
 									<ul>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span><span data-toggle="tooltip" data-placement="bottom" title="users"> 21</span></li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
+										<li><a ng-click="addSupport(arg,$index)"><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span></a><span data-toggle="tooltip" data-placement="bottom" title="{{arg.content.supports}}"> {{arg.content.supports.length}}</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span><span data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.disputes.length}}</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span><span data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span></li>
 									</ul>
 								</div>
 								</div>
@@ -71,9 +71,9 @@
 								</p>
 								<div class="tweet-actions" ng-show="currentUser">
 									<ul>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
-										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span><span data-toggle="tooltip" data-placement="bottom" title=""> 21</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Agree" class="glyphicon glyphicon-thumbs-up"></span><span data-toggle="tooltip" data-placement="bottom" title="{{arg.content.supports}}"> {{arg.content.supports.length}}</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Disagree" class="glyphicon glyphicon-thumbs-down"></span><span data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.disputes.length}}</span></li>
+										<li><span data-toggle="tooltip" data-placement="bottom" title="Counter" class="glyphicon glyphicon-comment"></span><span data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span></li>
 									</ul>
 								</div>
 							</div>
