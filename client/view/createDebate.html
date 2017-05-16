@@ -1,36 +1,32 @@
 <div class="create-custom" ng-controller="MainController">
-<form>
-<div class="input-group col-xs-4">
-    <input id="question" type="text" class="form-control" name="debateQuestion" placeholder="Question" ng-model="debate.question">
+<form name="myform" novalidate>
+<h2>Create a Debate</h2>
+<div class="input-group col-xs-12 col-md-12">
+    <label for="question">Topic</label>
+    <input id="question" type="text" class="form-control" name="debateQuestion" placeholder="eg: Is presidential form of government better?" ng-model="debate.question" ng-required="true">
 </div><br/>
-<div class="input-group col-xs-4">
-    <input id="desc" type="text" class="form-control" name="debateDesc" placeholder="Description" ng-model="debate.content.desc">
+<div class="input-group col-xs-12 col-md-12">
+    <label for="desc">Brief description</label>
+    <textarea id="desc" class="form-control" name="debateDesc" placeholder="describe briefly about the debate topic" ng-model="debate.content.desc" ng-required="true"></textarea>
+</div><br/>
+<div class="input-group col-xs-12 col-md-12">
+     <label for="leftLabel">Label for left side</label>
+    <input id="leftLabel" type="text" class="form-control" name="leftLabel" placeholder="eg: Presidential system is best" ng-model="debate.leftLabel" ng-required="true">
+</div><br/>
+<div class="input-group col-xs-12 col-md-12">
+    <label for="rightLabel">Label for right side</label>
+    <input id="rightLabel" type="text" class="form-control" name="rightLabel" placeholder="eg: Parliamentary system is better" ng-model="debate.rightLabel" ng-required="true">
 </div><br/>
 <div class="input-group">
-	<input class="form-control" type="text" name="debateProData" placeholder="Pro Data, links etc" ng-model="proData"/> 
-	<button class="btn btn-default" ng-click="addProData(proData)">Add Pro Data</button>
+	<label for="publicFlag">Open for all</label><br/>
+	<label class="switch">
+  	<input ng-disabled="true" type="checkbox" id="publicFlag" ng-model="debate.public" ng-init="debate.public=true">
+  	<div class="slider round"></div>
+	</label>
 </div><br/>
 <div class="input-group">
-	<input	class="form-control" type="text" name="debateConData" placeholder="Con Data, links etc" ng-model="conData"/>
-	<button class="btn btn-default" ng-click="addConData(conData)">Add Con Data</button>
+	<button class="btn btn-success" ng-disabled="myform.$invalid" ng-click="submitDebate()">Start a Debate</button>
 </div>
-<br/>
-<div class="input-group">
-	<button class="btn btn-success" ng-click="submitDebate()">Start a Debate</button>
-</div>
-<br/>
 </form>
-<div class="list-group">
- <span class="input-group-addon">Pro Data</span>
-<ul class="list-group">
-  <li class="list-group-item" ng-repeat="proDt in debate.content.pro_data">{{proDt}}</li>
-</ul>
-</div>
-<div class="list-group">
-<span class="input-group-addon">Con Data</span>
-<ul class="list-group">
-  <li class="list-group-item" ng-repeat="conDt in debate.content.con_data">{{conDt}}</li>
-</ul>
-</div>
 </div>
 

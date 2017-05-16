@@ -3,18 +3,18 @@
         <div>
             <div class="panel panel-success">
                 <h3 class="page-header" ng-show="currentDebate.question">
-                    {{currentDebate.question}}
-                    <small
-                            ng-show="currentDebate.content.desc">{{currentDebate.content.desc}}
-                    </small>
+                    <strong>{{currentDebate.question}}</strong><small class="pull-right"><button><span class="glyphicon glyphicon-resize-vertical pull-right" ></span></button></small>
                 </h3>
+                 <div ng-show="true"><small
+                            ng-show="currentDebate.content.desc">{{currentDebate.content.desc}}
+                </small></div>
             </div>
         </div>
     </div>
     <div>
         <div class="for-panel panel">
             <div class="panel-heading">
-                <strong>FOR</strong>
+                <strong>{{currentDebate.leftLabel}}</strong>
             </div>
             <div class="col-sm-4" id="left">
                 <div class="panel-body">
@@ -49,9 +49,9 @@
                                                                                        ng-class="getDisputed(arg)" class="glyphicon glyphicon-thumbs-down"></span></a><span
                                                 data-toggle="tooltip" data-placement="bottom" title="{{arg.content.disputes}}"> {{arg.content.disputes.length}}</span>
                                         </li>
-                                        <li><span data-toggle="tooltip" data-placement="bottom" title="Counter"
+                                        <li><a data-toggle="modal" data-target="#myModal"><span data-toggle="tooltip" data-placement="bottom" title="Counter"
                                                   class="glyphicon glyphicon-comment"></span><span
-                                                data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span>
+                                                data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span></a>
                                         </li>
                                     </ul></strong>
                                 </div>
@@ -60,8 +60,8 @@
                     </ul>
                 </div>
                 <div class="panel-footer ip lft" ng-show="currentUser">
-                    <div class="">
-                        <textarea rows="3" class="form-control input-sm" ng-model="txtPArg"
+                    <div class="input-group">
+                        <textarea rows="2" class="form-control input-sm" ng-model="txtPArg"
                                   placeholder="Make your point here"></textarea>
                         <span class="input-group-addon btn btn-success" ng-click="addArgument(txtPArg,'Y')">
                                 Send
@@ -73,7 +73,7 @@
 
         <div class="ag-panel panel">
             <div class="panel-heading">
-                <strong>AGAINST</strong>
+                <strong>{{currentDebate.rightLabel}}</strong>
             </div>
             <div class="col-sm-4" id="right">
 
@@ -109,9 +109,9 @@
                                                                                        ng-class="getDisputed(arg)" class="glyphicon glyphicon-thumbs-down"></span></a><span
                                                 data-toggle="tooltip" data-placement="bottom" title="{{arg.content.disputes}}"> {{arg.content.disputes.length}}</span>
                                         </li>
-                                        <li><span data-toggle="tooltip" data-placement="bottom" title="Counter"
+                                        <li><a data-toggle="modal" data-target="#myModal"><span data-toggle="tooltip" data-placement="bottom" title="Counter"
                                                   class="glyphicon glyphicon-comment"></span><span
-                                                data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span>
+                                                data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span></a>
                                         </li>
                                     </ul></strong>
                                 </div>
@@ -120,8 +120,8 @@
                     </ul>
                 </div>
                 <div class="panel-footer ip rgt" ng-show="currentUser">
-                    <div class="">
-                        <textarea rows="3" ng-model="txtNArg" class="form-control input-sm"
+                    <div class="input-group">
+                        <textarea rows="2" ng-model="txtNArg" class="form-control input-sm"
                                   placeholder="Make your point here"></textarea>
                         <span class="input-group-addon btn btn-success" ng-click="addArgument(txtNArg,'N')">
                                 Send
@@ -131,6 +131,6 @@
             </div>
         </div>
     </div>
-
 </div>
+
 

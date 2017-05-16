@@ -20,9 +20,10 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 	}
 
 	$scope.getSupported = function(argument){
+			if($rootScope.currentUser){
 		if(checkSupported(argument)){
 			return 'green';
-		}
+		}}
 	}
 	var checkDisputed = function(argument){
 		var email = $rootScope.currentUser.email;
@@ -39,9 +40,11 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 	}
 
 	$scope.getDisputed = function(argument){
+		if($rootScope.currentUser){
 		if(checkDisputed(argument)){
 			return 'red';
 		}
+	}
 	}
 
 	var addDebateConn = function() {

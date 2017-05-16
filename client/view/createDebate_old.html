@@ -1,0 +1,36 @@
+<div class="create-custom" ng-controller="MainController">
+<form>
+<div class="input-group col-xs-4">
+    <input id="question" type="text" class="form-control" name="debateQuestion" placeholder="Question" ng-model="debate.question">
+</div><br/>
+<div class="input-group col-xs-4">
+    <input id="desc" type="text" class="form-control" name="debateDesc" placeholder="Description" ng-model="debate.content.desc">
+</div><br/>
+<div class="input-group">
+	<input class="form-control" type="text" name="debateProData" placeholder="Pro Data, links etc" ng-model="proData"/> 
+	<button class="btn btn-default" ng-click="addProData(proData)">Add Pro Data</button>
+</div><br/>
+<div class="input-group">
+	<input	class="form-control" type="text" name="debateConData" placeholder="Con Data, links etc" ng-model="conData"/>
+	<button class="btn btn-default" ng-click="addConData(conData)">Add Con Data</button>
+</div>
+<br/>
+<div class="input-group">
+	<button class="btn btn-success" ng-click="submitDebate()">Start a Debate</button>
+</div>
+<br/>
+</form>
+<div class="list-group">
+ <span class="input-group-addon">Pro Data</span>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="proDt in debate.content.pro_data">{{proDt}}</li>
+</ul>
+</div>
+<div class="list-group">
+<span class="input-group-addon">Con Data</span>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="conDt in debate.content.con_data">{{conDt}}</li>
+</ul>
+</div>
+</div>
+

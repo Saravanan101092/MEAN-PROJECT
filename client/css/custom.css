@@ -13,35 +13,36 @@ body, html {
 .page-header{
 	  margin: 0;
 	  padding-left: 1%;
+	  padding-bottom: 0;
 }
 .debate-panel{
 	left:0;
 	position: fixed;
-	height: 10%; 
+	height: 13%; 
 	width: 100%;
-	top: 55px;
+	top: 8%;
 	padding-top: 0;
     padding-bottom: 0;
 	padding-right: 0;
     padding-left: 0;
 	margin: 0;
-	overflow: hidden;
+	overflow-y: scroll;
 }
 .for-panel{
 	left:0;
 	position: fixed;
-	height: 65%; 
+	height: 67%;
 	width: 50%;
-	top: 15%;
-	bottom: 15%;
+	bottom: 8.5%;
+	top:21%;
 }
 .ag-panel{
 	right:0;
 	position: fixed;
-	height: 65%;
+	height: 67%;
 	width: 50%;
-	top: 15%;
-	bottom: 15%;
+	bottom: 8.5%;
+	top:21%;
 }
 
 @media (min-width: 768px){
@@ -54,7 +55,7 @@ body, html {
 	height: 67%;
     /*overflow-y: scroll; */
 	width: 50%;
-	bottom: 15%;
+	bottom: 8.5%;
   }
   
   #right {
@@ -64,7 +65,7 @@ body, html {
 	height: 67%;
     overflow-y: scroll;
     width: 50%;
-	bottom: 15%;
+	bottom: 8.5%;
   }
 }
 
@@ -85,26 +86,18 @@ body, html {
 }
 
 .panel-heading{
-		padding-top: 0;
-    padding-bottom: 0;
+	padding-top: 0;
+padding-bottom: 0;
 text-align: center;
 }
 .ip{
 	position: fixed;
-	/*height: 5%;*/
+	height: 8.5%;
     /*overflow-y: scroll;*/
     width: 50%;
 	bottom: 0%;
 }
-.browse-custom{
-	/*position: fixed;
-	overflow-y: scroll;
-	width: 100%;
-	padding-top: 3%;
-	padding-right: 2%;
-	 word-wrap: break-word;
-	padding-bottom: 2%;*/
-}
+
 .browse-tiles{ 
 	width: auto; 
 	 height: 100%; 
@@ -173,10 +166,12 @@ padding-top: 40px;
 	
 .create-custom {
 	position: fixed;
-	overflow-y: scroll;
-	height: 90%; 
+	height: 90%;
+	width: 90%;
+	right: 5%;
+	left: 5%; 
 	top: 10%;
-	padding-top: 5%;
+	padding-top: 0%;
     padding-bottom: 5%;
 	padding-right: 5%;
     padding-left: 5%;
@@ -206,7 +201,7 @@ input.ng-valid.ng-touched {
 	height: 67%;
 	overflow-y: scroll;
 	width: 50%;
-	bottom: 15%;
+	bottom: 8.5%;
 }
 
 
@@ -258,7 +253,6 @@ input.ng-valid.ng-touched {
 }
 .displayblock{
 	position:fixed;
-	overflow-y: scroll;
 	bottom:1%;
 	top:6%;
 	right:1%;
@@ -277,4 +271,58 @@ input.ng-valid.ng-touched {
 }
 .glyphicon:hover{
 	font-size: large;
+}
+
+.material-icons{
+color:#263D26;
+}
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+.switch input {display:none;}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+.panel-success{
+	border-color: green;
 }

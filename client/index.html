@@ -4,6 +4,7 @@
     <title>Debates Project</title>
 
     <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="css/material.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -12,6 +13,11 @@
     <link href="css/twitter.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="../css/signin.css" rel="stylesheet">
+   
+   <script type="text/javascript" src="js/material.min.js"></script>
+ 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
@@ -95,7 +101,25 @@
 <div ng-show="message" class="alert footer footDebate" ng-class="msgClass">
     <strong>{{message}}</strong>
 </div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Counters</h4>
+      </div>
+      <div class="modal-body">
+        <p>Counters will be shown here.. coming soon</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
