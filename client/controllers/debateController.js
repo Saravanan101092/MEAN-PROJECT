@@ -204,7 +204,61 @@ myApp.controller('DebateController',['$http','$scope', '$rootScope','$location',
 
 	}
 
-	$scope.addCounter = function(){
+	$scope.counters = function(argument,index){
+console.log("inside counters metod"+JSON.stringify(argument));
+
+		$rootScope.modalArgument = argument;
+		$http.post('/saru/arguments/multiple',argument.content.counters).then(function(response){
+			console.log("response for counters"+JSON.stringify(response.data));
+			$rootScope.counterArgs = response.data;
+		});
+	}
+	$scope.addCounter = function(arg){
+		console.log("inside counters metod"+JSON.stringify($scope.modalArgument));
+		console.log("inside counters metod"+JSON.stringify(arg));
+		var mArg = $rootScope.modalArgument;
+		var argument = {};
+		argument.debateId =mArg.debateId;
+		argument.content = {};
+		argument.content.text = arg;
+		argument.content.supports = [];
+		argument.content.disputes = [];
+		argument.content.counters = [];
+		if (mArg.content.proInd === 'Y') {
+			argument.content.proInd = 'N';
+		}else{
+			argument.content.proInd = 'Y';
+		}
+		argument.user={};
+		argument.user.email=$rootScope.currentUser.email;
+		argument.user.fullname=$rootScope.currentUser.fullname;
+		argument.user.firstname = $rootScope.currentUser.firstname;
+		argument.user.lastname =$rootScope.currentUser.lastname;
+		argument.user.id=$rootScope.currentUser.regUser;
+		argument.user.photourl = $rootScope.currentUser.photourl;
+		argument.parent = mArg._id;
+		var result = $http.post('/saru/arguments',argument).then(function(response){
+
+			if (argument.content.proInd === 'Y') {
+				if ($scope.currentPArgs == 'undefined') {
+					$scope.currentPArgs = [];
+				}
+				$scope.currentPArgs.push(response.data);
+				$scope.txtPArg="";
+			} else {
+				if ($scope.currentNArgs === 'undefined') {
+					$scope.currentNArgs = [];
+				}
+				$scope.currentNArgs.push(response.data);
+				$scope.txtNArg="";
+			}
+			socket.emit('newArg', response.data);
+			$scope.counterArg="";
+			$http.put('/saru/arguments/'+mArg._id+'/counter/add/'+response.data._id).then(function(response2){
+				$scope.$apply();
+			});
+
+		});
 
 	}
 

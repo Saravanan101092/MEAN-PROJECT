@@ -19,7 +19,7 @@
             <div class="col-sm-4" id="left">
                 <div class="panel-body">
                     <ul class="chat lft" ng-model="currentPArgs">
-                        <li class="left clearfix" ng-repeat="arg in currentPArgs"><span class="chat-img pull-left">
+                        <li class="left clearfix" ng-repeat="arg in currentPArgs track by arg._id"><span class="chat-img pull-left">
                             <img ng-src="{{getAvatarSrc(arg.user.firstname,arg.user.lastname,arg.user)}}"
                                  alt="User Avatar" class="img-circle imgwidth">
                         </span>
@@ -49,7 +49,7 @@
                                                                                        ng-class="getDisputed(arg)" class="glyphicon glyphicon-thumbs-down"></span></a><span
                                                 data-toggle="tooltip" data-placement="bottom" title="{{arg.content.disputes}}"> {{arg.content.disputes.length}}</span>
                                         </li>
-                                        <li><a data-toggle="modal" data-target="#myModal"><span data-toggle="tooltip" data-placement="bottom" title="Counter"
+                                        <li><a data-toggle="modal" data-target="#myModal" ng-click="counters(arg,$index)"><span data-toggle="tooltip" data-placement="bottom" title="Counter"
                                                   class="glyphicon glyphicon-comment"></span><span
                                                 data-toggle="tooltip" data-placement="bottom" title=""> {{arg.content.counters.length}}</span></a>
                                         </li>
@@ -79,7 +79,7 @@
 
                 <div class="panel-body">
                     <ul class="chat rgt" ng-model="currentNArgs">
-                        <li class="left clearfix" ng-repeat="arg in currentNArgs"><span class="chat-img pull-left">
+                        <li class="left clearfix" ng-repeat="arg in currentNArgs track by arg._id"><span class="chat-img pull-left">
                             <img ng-src="{{getAvatarSrc(arg.user.firstname,arg.user.lastname,arg.user)}}"
                                  class="img-circle imgwidth">
                         </span>

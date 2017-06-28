@@ -326,3 +326,15 @@ input:checked + .slider:before {
 .panel-success{
 	border-color: green;
 }
+
+.modalcustom{
+	height: 100%;
+	width: 100%;
+}
+.modalContentCustom{
+	position: fixed;
+	height: 500px;
+	width: 800px;
+	overflow-y: scroll;
+
+}

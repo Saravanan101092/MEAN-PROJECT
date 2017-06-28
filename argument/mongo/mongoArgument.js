@@ -118,4 +118,10 @@ module.exports = function(app,getDB){
 			$pull: { "content.counters": { $in: [argumentId]}} },
 			cb);
 	};
+	app.getCounters = function(ids,cb){
+		var cursor = getDB().collection('Arguments').find({_id: {
+			$in: ids
+		}});
+		cursor.toArray(cb);
+	}
 }

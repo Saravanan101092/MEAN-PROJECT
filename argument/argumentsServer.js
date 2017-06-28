@@ -1,7 +1,7 @@
 /**
  * 
  */
-
+var ObjectId = require('mongodb').ObjectID;
 module.exports = function(app,sendResponseJson){
 app.get('/saru/argument', function(req, res ){
 	if(!app.connected()){
@@ -182,6 +182,19 @@ app.put('/saru/arguments/:argumentID/counter/remove/:counterID',function(req,res
 			 }else{
 				 sendResponseJson(res,result);
 			 }
+	});
+});
+
+app.post('/saru/arguments/multiple',function(req,res){
+	var data = req.body;
+	console.log(JSON.stringify(req.body));
+	var objectIDs = [];
+	for(var i=0; j=data.length,i<j; i++){
+		console.log(data[i]);
+		objectIDs.push(new ObjectId(data[i]));
+	}
+	app.getCounters(objectIDs,function(err, data){
+		sendResponseJson(res,data);
 	});
 });
 }
