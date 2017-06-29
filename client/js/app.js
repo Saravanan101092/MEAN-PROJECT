@@ -60,5 +60,5 @@ myApp.config(function ($routeProvider, $locationProvider) {
             templateUrl: "view/debate.html",
            // controller: "DebateController"
         })
-        .otherwise({redirectTo: '/login'});
+        .otherwise({redirectTo: '/browseDebates'});
 });

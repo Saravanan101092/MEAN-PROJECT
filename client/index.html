@@ -131,15 +131,15 @@
 
                                 <div class="tweet-actions" ng-show="currentUser">
                                     <strong> <ul>
-                                        <li><a ng-click="addSupport(arg,$index)"><span data-toggle="tooltip"
+                                        <li><span data-toggle="tooltip"
                                                                                        data-placement="bottom"
                                                                                        title="Agree" ng-class="getSupported(arg)"
-                                                                                       class="glyphicon glyphicon-thumbs-up"></span></a><span
+                                                                                       class="glyphicon glyphicon-thumbs-up"></span><span
                                                 data-toggle="tooltip" data-placement="bottom"
                                                 title="{{arg.content.supports}}"> {{arg.content.supports.length}}</span>
                                         </li>
-                                        <li><a ng-click="addDispute(arg,$index)"><span data-toggle="tooltip" data-placement="bottom" title="Disagree"
-                                                                                       ng-class="getDisputed(arg)" class="glyphicon glyphicon-thumbs-down"></span></a><span
+                                        <li><span data-toggle="tooltip" data-placement="bottom" title="Disagree"
+                                                                                       ng-class="getDisputed(arg)" class="glyphicon glyphicon-thumbs-down"></span><span
                                                 data-toggle="tooltip" data-placement="bottom" title="{{arg.content.disputes}}"> {{arg.content.disputes.length}}</span>
                                         </li>
                                     </ul></strong>
