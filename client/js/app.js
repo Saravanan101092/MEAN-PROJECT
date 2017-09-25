@@ -33,11 +33,11 @@ myApp.config(function ($routeProvider, $locationProvider) {
         .when("/browseDebates", {
             templateUrl: "view/browseDebates.html",
             controller: "BrowseDebatesController",
-            resolve: {
-                currentAuth: function(Authentication) {
-                    return Authentication.requireAuth();
-                } //currentAuth
-            }//resolve
+            //resolve: {
+              //  currentAuth: function(Authentication) {
+               //     return Authentication.requireAuth();
+             //   } //currentAuth
+           // }//resolve
         })
         .when("/createDebate", {
             templateUrl: "view/createDebate.html",
